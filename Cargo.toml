@@ -1,0 +1,89 @@
+# Copyright 2022 The Blaze Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+[workspace]
+members = [
+    "native-engine/datafusion-ext-commons",
+    "native-engine/datafusion-ext-exprs",
+    "native-engine/datafusion-ext-functions",
+    "native-engine/datafusion-ext-plans",
+    "native-engine/blaze",
+    "native-engine/blaze-jni-bridge",
+    "native-engine/blaze-serde",
+]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = false
+
+[profile.pre]
+inherits = "release"
+#incremental = true
+opt-level = 1
+lto = false
+codegen-units = 16
+strip = false
+
+[profile.dev]
+debug = true
+overflow-checks = false
+
+[workspace.dependencies]
+blaze = { path = "./native-engine/blaze" }
+blaze-jni-bridge = { path = "./native-engine/blaze-jni-bridge" }
+blaze-serde = { path = "./native-engine/blaze-serde" }
+datafusion-ext-commons = { path = "./native-engine/datafusion-ext-commons" }
+datafusion-ext-exprs = { path = "./native-engine/datafusion-ext-exprs" }
+datafusion-ext-functions = { path = "./native-engine/datafusion-ext-functions" }
+datafusion-ext-plans = { path = "./native-engine/datafusion-ext-plans" }
+
+# datafusion: branch=v36-blaze
+datafusion = { version = "36.0.0" }
+
+# arrow: branch=v50-blaze
+arrow = { version = "50.0.0", features = ["ffi"]}
+arrow-schema = { version = "50.0.0", features = ["serde"] }
+parquet = { version = "50.0.0" }
+
+# serde_json: branch=v1.0.96-blaze
+serde_json = { version = "1.0.96" }
+
+[patch.crates-io]
+# datafusion: branch=v36-blaze
+datafusion = { git = "https://github.com/blaze-init/arrow-datafusion.git", rev = "17b1ad3c7432391b94dd54e48a60db6d5712a7ef"}
+datafusion-common = { git = "https://github.com/blaze-init/arrow-datafusion.git", rev = "17b1ad3c7432391b94dd54e48a60db6d5712a7ef"}
+datafusion-expr = { git = "https://github.com/blaze-init/arrow-datafusion.git", rev = "17b1ad3c7432391b94dd54e48a60db6d5712a7ef"}
+datafusion-execution = { git = "https://github.com/blaze-init/arrow-datafusion.git", rev = "17b1ad3c7432391b94dd54e48a60db6d5712a7ef"}
+datafusion-optimizer = { git = "https://github.com/blaze-init/arrow-datafusion.git", rev = "17b1ad3c7432391b94dd54e48a60db6d5712a7ef"}
+datafusion-physical-expr = { git = "https://github.com/blaze-init/arrow-datafusion.git", rev = "17b1ad3c7432391b94dd54e48a60db6d5712a7ef"}
+
+# arrow: branch=v50-blaze
+arrow = { git = "https://github.com/blaze-init/arrow-rs.git", rev = "7471d70f7ae6edd5d4da82b7d966a8ede720e499"}
+arrow-arith = { git = "https://github.com/blaze-init/arrow-rs.git", rev = "7471d70f7ae6edd5d4da82b7d966a8ede720e499"}
+arrow-array = { git = "https://github.com/blaze-init/arrow-rs.git", rev = "7471d70f7ae6edd5d4da82b7d966a8ede720e499"}
+arrow-buffer = { git = "https://github.com/blaze-init/arrow-rs.git", rev = "7471d70f7ae6edd5d4da82b7d966a8ede720e499"}
+arrow-cast = { git = "https://github.com/blaze-init/arrow-rs.git", rev = "7471d70f7ae6edd5d4da82b7d966a8ede720e499"}
+arrow-data = { git = "https://github.com/blaze-init/arrow-rs.git", rev = "7471d70f7ae6edd5d4da82b7d966a8ede720e499"}
+arrow-ord = { git = "https://github.com/blaze-init/arrow-rs.git", rev = "7471d70f7ae6edd5d4da82b7d966a8ede720e499"}
+arrow-row = { git = "https://github.com/blaze-init/arrow-rs.git", rev = "7471d70f7ae6edd5d4da82b7d966a8ede720e499"}
+arrow-schema = { git = "https://github.com/blaze-init/arrow-rs.git", rev = "7471d70f7ae6edd5d4da82b7d966a8ede720e499"}
+arrow-select = { git = "https://github.com/blaze-init/arrow-rs.git", rev = "7471d70f7ae6edd5d4da82b7d966a8ede720e499"}
+arrow-string = { git = "https://github.com/blaze-init/arrow-rs.git", rev = "7471d70f7ae6edd5d4da82b7d966a8ede720e499"}
+parquet = { git = "https://github.com/blaze-init/arrow-rs.git", rev = "7471d70f7ae6edd5d4da82b7d966a8ede720e499"}
+
+# serde_json: branch=v1.0.96-blaze
+serde_json = { git = "https://github.com/blaze-init/json", branch = "v1.0.96-blaze" }

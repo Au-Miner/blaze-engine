@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fade0a81-93cf-4f1c-985d-ebf8b9d1e0d7" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/blaze-engine.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build-native.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/.scalafmt.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/docker-build/centos7/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/docker-build/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/license-header" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/mvn-build-helper/assembly/assembly.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/mvn-build-helper/assembly/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/mvn-build-helper/proto/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/mvn-build-helper/proto/proto.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/run-tpcds-test" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_bin/env.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_bin/init-env.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_bin/run.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_conf/capacity-scheduler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_conf/core-site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_conf/hdfs-site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_conf/hive-site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_conf/log4j.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_conf/mapred-site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_conf/spark-defaults.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_conf/yarn-site.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_software/download_and_install.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_workspace/init_bigint_1m.q" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/_workspace/shuffle.q" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/testenv/spark-sql-blazePlugin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/utils.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze-jni-bridge/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze-jni-bridge/src/conf.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze-jni-bridge/src/jni_bridge.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze-jni-bridge/src/lib.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze-serde/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze-serde/build.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze-serde/proto/blaze.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze-serde/src/error.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze-serde/src/from_proto.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze-serde/src/lib.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze/src/alloc.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze/src/exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze/src/lib.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze/src/logging.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze/src/metrics.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/blaze/src/rt.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/array_size.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/bytes_arena.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/cast.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/ds/loser_tree.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/ds/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/ds/rdx_tournament_tree.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/ffi_helper.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/hadoop_fs.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/io/batch_serde.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/io/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/io/scalar_serde.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/lib.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/rdxsort.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/slim_bytes.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/spark_hash.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/streams/coalesce_stream.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/streams/ffi_stream.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/streams/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-commons/src/uda.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-exprs/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-exprs/src/cast.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-exprs/src/get_indexed_field.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-exprs/src/get_map_value.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-exprs/src/lib.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-exprs/src/named_struct.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-exprs/src/row_num.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-exprs/src/spark_scalar_subquery_wrapper.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-exprs/src/spark_udf_wrapper.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-exprs/src/string_contains.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-exprs/src/string_ends_with.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-exprs/src/string_starts_with.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-functions/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-functions/src/brickhouse/array_union.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-functions/src/brickhouse/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-functions/src/lib.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-functions/src/spark_check_overflow.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-functions/src/spark_get_json_object.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-functions/src/spark_make_array.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-functions/src/spark_make_decimal.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-functions/src/spark_murmur3_hash.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-functions/src/spark_null_if.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-functions/src/spark_strings.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-functions/src/spark_unscaled_value.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/acc.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/agg_context.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/agg_table.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/avg.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/brickhouse/collect.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/brickhouse/combine_unique.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/brickhouse/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/collect_list.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/collect_set.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/count.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/first.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/first_ignores_null.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/maxmin.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg/sum.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/agg_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/broadcast_join_build_hash_map_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/broadcast_join_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/common/batch_selection.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/common/batch_statisitcs.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/common/cached_exprs_evaluator.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/common/column_pruning.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/common/ipc_compression.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/common/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/common/output.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/debug_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/empty_partitions_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/expand_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/ffi_reader_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/filter_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/generate/explode.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/generate/json_tuple.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/generate/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/generate/spark_udtf_wrapper.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/generate_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/ipc_reader_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/ipc_writer_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/joins/bhj/full_join.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/joins/bhj/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/joins/bhj/semi_join.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/joins/join_hash_map.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/joins/join_utils.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/joins/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/joins/smj/existence_join.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/joins/smj/full_join.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/joins/smj/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/joins/smj/semi_join.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/joins/stream_cursor.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/joins/test.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/lib.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/limit_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/memmgr/metrics.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/memmgr/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/memmgr/spill.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/parquet_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/parquet_sink_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/project_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/rename_columns_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/rss_shuffle_writer_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/shuffle/buffered_data.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/shuffle/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/shuffle/rss.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/shuffle/rss_single_repartitioner.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/shuffle/rss_sort_repartitioner.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/shuffle/single_repartitioner.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/shuffle/sort_repartitioner.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/shuffle_writer_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/sort_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/sort_merge_join_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/window/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/window/processors/agg_processor.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/window/processors/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/window/processors/rank_processor.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/window/processors/row_number_processor.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/window/window_context.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/native-engine/datafusion-ext-plans/src/window_exec.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/release-docker.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rust-toolchain.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rustfmt.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scalafix.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scalafmt.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/blaze/ShimsImpl.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/ConvertToNativeExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeAggExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeBroadcastExchangeExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeBroadcastJoinExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeExpandExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeFilterExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeGenerateExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeGlobalLimitExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeLocalLimitExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetInsertIntoHiveTableExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetScanExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetSinkExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativePartialTakeOrderedExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeProjectExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeRenameColumnsExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeShuffleExchangeExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeSortExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeSortMergeJoinExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeTakeOrderedExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeUnionExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeWindowExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeBlockStoreShuffleReader.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleManager.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleWriter.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/spark-extension-shims-spark333.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/java/org/apache/spark/sql/blaze/ValidateSparkPlanApplyInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/java/org/apache/spark/sql/blaze/ValidateSparkPlanInjector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/blaze/InterceptedValidateSparkPlan.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/blaze/ShimsImpl.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/ConvertToNativeExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeAggExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeBroadcastExchangeExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeExpandExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeFilterExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeGenerateExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeGlobalLimitExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeLocalLimitExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetInsertIntoHiveTableExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetScanExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetSinkExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativePartialTakeOrderedExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeProjectExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeRenameColumnsExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeShuffleExchangeExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeSortExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeTakeOrderedExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeUnionExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeWindowExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeBlockStoreShuffleReader.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleManager.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleWriter.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/joins/blaze/plan/NativeBroadcastJoinExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/joins/blaze/plan/NativeSortMergeJoinExec.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/memory/blaze/OnHeapSpillManagerHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/blaze/BlazeConf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/blaze/JniBridge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/blaze/JniUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/execution/blaze/arrowio/util/ArrowColumnVector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/execution/blaze/plan/NativeParquetSinkUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/hive/blaze/HiveClientHelper.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/BlazeCallNativeWrapper.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/BlazeConvertStrategy.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/BlazeConverters.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/BlazeSparkSessionExtension.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/MetricNode.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/NativeConverters.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/NativeHelper.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/NativeRDD.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/NativeSupports.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/Shims.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/SparkUDFWrapperContext.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/SparkUDTFWrapperContext.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/memory/OnHeapSpill.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/memory/OnHeapSpillManager.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/memory/SpillBuf.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/util/Using.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/arrowio/ArrowFFIExportIterator.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/arrowio/ColumnarHelper.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/arrowio/util/ArrowUtils.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/arrowio/util/ArrowWriter.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/ConvertToNativeBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeAggBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeBroadcastExchangeBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeBroadcastJoinBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeExpandBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeFilterBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeGenerateBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeGlobalLimitBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeLocalLimitBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetInsertIntoHiveTableBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetScanBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetSinkBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeProjectBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeRenameColumnsBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeShuffleExchangeBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeSortBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeSortMergeJoinBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeTakeOrderedBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeUnionBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeWindowBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/Util.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeBlockStoreShuffleReaderBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleDependency.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleWriterBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/RssPartitionWriterBase.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/hive/blaze/HiveUDFUtil.scala" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Au-Miner&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/kwai/blaze.git&quot;,
+    &quot;accountId&quot;: &quot;f8fedc5c-e1a8-48d0-bd68-f13ca23cfab5&quot;
+  }
+}</component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="lb9okwqs" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2idZ4qjLGT0RIghk0TGWOmMXN3Q" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.23296888&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="fade0a81-93cf-4f1c-985d-ebf8b9d1e0d7" name="更改" comment="" />
+      <created>1719822225273</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719822225273</updated>
+      <workItem from="1719822226438" duration="4775000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
+  </component>
+</project>
