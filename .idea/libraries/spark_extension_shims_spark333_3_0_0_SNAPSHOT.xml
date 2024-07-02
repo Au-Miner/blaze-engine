@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="spark-extension-shims-spark333-3.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/spark-extension-shims-spark333/target/spark-extension-shims-spark333-3.0.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="proto-3.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dev/mvn-build-helper/proto/target/proto-3.0.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

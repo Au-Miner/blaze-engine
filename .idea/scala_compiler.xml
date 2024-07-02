@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="Maven 1" modules="assembly,blaze-engine,proto,spark-extension,spark-extension-shims-spark333">
+      <parameters>
+        <parameter value="-Ywarn-unused" />
+      </parameters>
+      <plugins>
+        <plugin path="$MAVEN_REPOSITORY$/org/scalameta/semanticdb-scalac_2.12.15/4.8.1/semanticdb-scalac_2.12.15-4.8.1.jar" />
+      </plugins>
+    </profile>
+  </component>
+</project>
