@@ -260,7 +260,6 @@
     </profile>
   </profiles>
 </project>
-
 <!--    <profile>-->
 <!--      <id>pre</id>-->
 <!--      <properties>-->
@@ -268,7 +267,6 @@
 <!--        <buildNativeWithRelease>false</buildNativeWithRelease>-->
 <!--      </properties>-->
 <!--    </profile>-->
-
 <!--    <profile>-->
 <!--      <id>spark303</id>-->
 <!--      <modules>-->

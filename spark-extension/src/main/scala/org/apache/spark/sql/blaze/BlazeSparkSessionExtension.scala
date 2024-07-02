@@ -86,6 +86,7 @@ case class BlazeColumnarOverrides(sparkSession: SparkSession) extends ColumnarRu
 
         // 生成当前物理计划的转换策略（并未实际转换）
         // generate convert strategy
+        logInfo("wqlnb: 准备插入策略")
         BlazeConvertStrategy.apply(sparkPlan)
         logInfo("Blaze convert strategy for current stage:")
         // 打印信息

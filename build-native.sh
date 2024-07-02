@@ -29,6 +29,7 @@ echo "old build-checksum: $old_checksum"
 echo "new build-checksum: $new_checksum"
 
 if [ "$new_checksum" != "$old_checksum" ]; then
+    echo "wqlnb: need repeat to cargo build..."
     echo "Running cargo fix..."
     cargo fix --all --allow-dirty --allow-staged
 

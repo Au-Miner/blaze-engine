@@ -55,11 +55,11 @@ pub extern "system" fn Java_org_apache_spark_sql_blaze_JniBridge_callNative(
 
         INIT.get_or_try_init(|| {
             // logging is not initialized at this moment
-            eprintln!("------ initializing blaze native environment ------");
+            eprintln!("------ initializing blaze native environment by wql ------");
             init_logging();
 
             // init jni java classes
-            log::info!("initializing JNI bridge");
+            log::info!("initializing JNI bridge by wql");
             JavaClasses::init(&env);
 
             // init datafusion session context
