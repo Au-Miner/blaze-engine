@@ -64,13 +64,18 @@ object NativeHelper extends Logging {
     offheapMemory
   }
 
-  def isNative(exec: SparkPlan): Boolean =
+  def isNative(exec: SparkPlan): Boolean = {
+    println("=====64")
     Shims.get.isNative(exec)
+  }
 
-  def getUnderlyingNativePlan(exec: SparkPlan): NativeSupports =
+  def getUnderlyingNativePlan(exec: SparkPlan): NativeSupports = {
+    println("=====65")
     Shims.get.getUnderlyingNativePlan(exec)
+  }
 
   def executeNative(exec: SparkPlan): NativeRDD = {
+    println("=====66")
     Shims.get.executeNative(exec)
   }
 
@@ -79,6 +84,7 @@ object NativeHelper extends Logging {
       metrics: MetricNode,
       partition: Partition,
       context: Option[TaskContext]): Iterator[InternalRow] = {
+    println("=====67")
 
     if (partition.index == 0 && metrics != null && context.nonEmpty) {
       metrics.foreach(_.add("stage_id", context.get.stageId()))
@@ -91,6 +97,7 @@ object NativeHelper extends Logging {
 
   // 创建默认的NativeMetrics
   def getDefaultNativeMetrics(sc: SparkContext): Map[String, SQLMetric] = {
+    println("=====68")
     var metrics = TreeMap(
       "stage_id" -> SQLMetrics.createMetric(sc, "stageId"),
       "output_rows" -> SQLMetrics.createMetric(sc, "Native.output_rows"),

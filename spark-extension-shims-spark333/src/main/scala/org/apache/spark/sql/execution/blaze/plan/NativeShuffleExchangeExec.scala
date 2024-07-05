@@ -42,6 +42,7 @@ case class NativeShuffleExchangeExec(
     override val outputPartitioning: Partitioning,
     override val child: SparkPlan)
     extends NativeShuffleExchangeBase(outputPartitioning, child) {
+  println("=====183")
 
   // NOTE: coordinator can be null after serialization/deserialization,
   //       e.g. it can be null on the Executor side
@@ -73,6 +74,7 @@ case class NativeShuffleExchangeExec(
 
   // 'mapOutputStatisticsFuture' is only needed when enable AQE.
   @transient override lazy val mapOutputStatisticsFuture: Future[MapOutputStatistics] = {
+    println("wqlnb: 真的走这里了！！！！！！！！")
     if (inputRDD.getNumPartitions == 0) {
       Future.successful(null)
     } else {
@@ -82,15 +84,23 @@ case class NativeShuffleExchangeExec(
     }
   }
 
-  override def numMappers: Int = shuffleDependency.rdd.getNumPartitions
+  override def numMappers: Int = {
+    println("=====184")
+    shuffleDependency.rdd.getNumPartitions
+  }
 
-  override def numPartitions: Int = shuffleDependency.partitioner.numPartitions
+  override def numPartitions: Int = {
+    println("=====185")
+    shuffleDependency.partitioner.numPartitions
+  }
 
   override def getShuffleRDD(partitionSpecs: Array[ShufflePartitionSpec]): RDD[InternalRow] = {
+    println("=====186")
     new ShuffledRowRDD(shuffleDependency, readMetrics, partitionSpecs)
   }
 
   override def runtimeStatistics: Statistics = {
+    println("=====187")
     val dataSize = metrics("dataSize").value
     val rowCount = metrics(SQLShuffleWriteMetricsReporter.SHUFFLE_RECORDS_WRITTEN).value
     Statistics(dataSize, Some(rowCount))
@@ -103,6 +113,7 @@ case class NativeShuffleExchangeExec(
 
   protected override def doExecuteNonNative(): RDD[InternalRow] = {
     // Returns the same ShuffleRowRDD if this plan is used by multiple plans.
+    println("=====188")
     if (cachedShuffleRDD == null) {
       cachedShuffleRDD = new ShuffledRowRDD(shuffleDependency, readMetrics)
     }
@@ -112,6 +123,7 @@ case class NativeShuffleExchangeExec(
   override def createNativeShuffleWriteProcessor(
       metrics: Map[String, SQLMetric],
       numPartitions: Int): ShuffleWriteProcessor = {
+    println("=====189")
 
     new ShuffleWriteProcessor {
       override protected def createMetricsReporter(
@@ -145,8 +157,13 @@ case class NativeShuffleExchangeExec(
     }
   }
 
-  override def shuffleOrigin: ShuffleOrigin = ENSURE_REQUIREMENTS
+  override def shuffleOrigin: ShuffleOrigin = {
+    println("=====190")
+    ENSURE_REQUIREMENTS
+  }
 
-  override protected def withNewChildInternal(newChild: SparkPlan): SparkPlan =
+  override protected def withNewChildInternal(newChild: SparkPlan): SparkPlan = {
+    println("=====191")
     copy(child = newChild)
+  }
 }

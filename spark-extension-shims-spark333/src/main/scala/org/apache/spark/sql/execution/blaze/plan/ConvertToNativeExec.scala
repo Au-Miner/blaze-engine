@@ -18,6 +18,8 @@ package org.apache.spark.sql.execution.blaze.plan
 import org.apache.spark.sql.execution.SparkPlan
 
 case class ConvertToNativeExec(override val child: SparkPlan) extends ConvertToNativeBase(child) {
-  override protected def withNewChildInternal(newChild: SparkPlan): SparkPlan =
+  override protected def withNewChildInternal(newChild: SparkPlan): SparkPlan = {
+    println("=====197")
     copy(child = newChild)
+  }
 }

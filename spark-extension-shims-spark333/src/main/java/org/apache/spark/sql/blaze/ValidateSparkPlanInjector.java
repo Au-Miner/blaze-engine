@@ -28,6 +28,7 @@ import net.bytebuddy.pool.TypePool;
 public class ValidateSparkPlanInjector {
     // 通过动态代理获取sparksql对物理执行计划sparkplan的验证器，替换为ValidateSparkPlanApplyInterceptor来执行验证
     public static void inject() {
+        System.out.println("=====214");
         ByteBuddyAgent.install();
         TypeDescription typeDescription = TypePool.Default.ofSystemLoader()
                 .describe("org.apache.spark.sql.execution.adaptive.ValidateSparkPlan$")

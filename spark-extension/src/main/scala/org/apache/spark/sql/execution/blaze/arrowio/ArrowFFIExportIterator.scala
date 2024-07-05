@@ -41,11 +41,13 @@ class ArrowFFIExportIterator(rowIter: Iterator[InternalRow], schema: StructType)
   private var currentVectorConsumed = true
 
   override def hasNext: Boolean = {
+    println("=====88")
     assert(currentVectorConsumed)
     rowIter.hasNext
   }
 
   override def next(): (Long, Long) => Unit = {
+    println("=====89")
     (exportArrowSchemaPtr: Long, exportArrowArrayPtr: Long) =>
       {
         Using.resource(ArrowUtils.newChildAllocator(getClass.getName)) { batchAllocator =>

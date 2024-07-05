@@ -86,6 +86,7 @@ object NativeConverters extends Logging {
   val subqueryEvaluatedTag: TreeNodeTag[Boolean] = TreeNodeTag[Boolean]("subqueryEvaluated")
 
   def convertScalarType(dataType: DataType): pb.ScalarType = {
+    println("=====49")
     val scalarTypeBuilder = dataType match {
       case NullType => pb.ScalarType.newBuilder().setScalar(pb.PrimitiveScalarType.NULL)
       case BooleanType => pb.ScalarType.newBuilder().setScalar(pb.PrimitiveScalarType.BOOL)
@@ -116,6 +117,7 @@ object NativeConverters extends Logging {
 
   // 转换为nativeDataType
   def convertDataType(sparkDataType: DataType): pb.ArrowType = {
+    println("=====50")
     val arrowTypeBuilder = pb.ArrowType.newBuilder()
     sparkDataType match {
       case NullType => arrowTypeBuilder.setNONE(pb.EmptyMessage.getDefaultInstance)
@@ -199,6 +201,7 @@ object NativeConverters extends Logging {
 
   // 转换为nativeValue
   def convertValue(sparkValue: Any, dataType: DataType): pb.ScalarValue = {
+    println("=====51")
     val scalarValueBuilder = pb.ScalarValue.newBuilder()
     dataType match {
       case _ if sparkValue == null => scalarValueBuilder.setNullValue(convertScalarType(dataType))
@@ -244,6 +247,7 @@ object NativeConverters extends Logging {
 
   // 转换nativeField
   def convertField(sparkField: StructField): pb.Field = {
+    println("=====52")
     pb.Field
       .newBuilder()
       .setName(sparkField.name)
@@ -254,6 +258,7 @@ object NativeConverters extends Logging {
 
   // 转换为nativeSchema
   def convertSchema(sparkSchema: StructType): pb.Schema = {
+    println("=====53")
     val schemaBuilder = pb.Schema.newBuilder()
     sparkSchema.foreach(sparkField => schemaBuilder.addColumns(convertField(sparkField)))
     schemaBuilder.build()
@@ -263,6 +268,7 @@ object NativeConverters extends Logging {
       filterExpr: Expression,
       leftOutput: Seq[Attribute],
       rightOutput: Seq[Attribute]): pb.JoinFilter = {
+    println("=====54")
     val schema = filterExpr.references.toSeq
     val columnIndices = mutable.ArrayBuffer[pb.ColumnIndex]()
     for (attr <- schema) {
@@ -301,6 +307,7 @@ object NativeConverters extends Logging {
   }
 
   def convertExpr(sparkExpr: Expression): pb.PhysicalExprNode = {
+    println("=====55")
     def fallbackToError: Expression => pb.PhysicalExprNode = { e =>
       throw new NotImplementedError(s"unsupported expression: (${e.getClass}) $e")
     }
@@ -384,6 +391,7 @@ object NativeConverters extends Logging {
   }
 
   def convertScanPruningExpr(sparkExpr: Expression): pb.PhysicalExprNode = {
+    println("=====56")
     convertExprWithFallback(
       sparkExpr,
       isPruningExpr = true,
@@ -399,6 +407,7 @@ object NativeConverters extends Logging {
 
   private def buildExprNode(buildFn: pb.PhysicalExprNode.Builder => pb.PhysicalExprNode.Builder)
       : pb.PhysicalExprNode = {
+    println("=====57")
     buildFn(pb.PhysicalExprNode.newBuilder()).build()
   }
 
@@ -406,6 +415,7 @@ object NativeConverters extends Logging {
       sparkExpr: Expression,
       isPruningExpr: Boolean,
       fallback: Expression => pb.PhysicalExprNode): pb.PhysicalExprNode = {
+    println("=====58")
     // assert(sparkExpr.deterministic, s"nondeterministic expression not supported: $sparkExpr")
 
     def buildBinaryExprNode(
@@ -1021,6 +1031,7 @@ object NativeConverters extends Logging {
   }
 
   def convertAggregateExpr(e: AggregateExpression): pb.PhysicalExprNode = {
+    println("=====59")
     assert(Shims.get.getAggregateExpressionFilter(e).isEmpty)
     val aggBuilder = pb.PhysicalAggExprNode.newBuilder()
 
@@ -1106,6 +1117,7 @@ object NativeConverters extends Logging {
   }
 
   def convertJoinType(joinType: JoinType): pb.JoinType = {
+    println("=====60")
     joinType match {
       case Inner => pb.JoinType.INNER
       case LeftOuter => pb.JoinType.LEFT
@@ -1121,6 +1133,7 @@ object NativeConverters extends Logging {
   def serializeExpression[E <: Expression](
       expr: E with Serializable,
       paramsSchema: StructType): Array[Byte] = {
+    println("=====61")
     Utils.tryWithResource(new ByteArrayOutputStream()) { bos =>
       Utils.tryWithResource(new ObjectOutputStream(bos)) { oos =>
         oos.writeObject(expr)
@@ -1133,6 +1146,7 @@ object NativeConverters extends Logging {
 
   def deserializeExpression[E <: Expression](
       serialized: Array[Byte]): (E with Serializable, StructType) = {
+    println("=====62")
     Utils.tryWithResource(new ByteArrayInputStream(serialized)) { bis =>
       Utils.tryWithResource(new ObjectInputStream(bis)) { ois =>
         val expr = ois.readObject().asInstanceOf[E with Serializable]
@@ -1143,6 +1157,7 @@ object NativeConverters extends Logging {
   }
 
   private def arithDecimalReturnType(e: BinaryArithmetic): DataType = {
+    println("=====63")
     if (!e.children.forall(_.dataType.isInstanceOf[DecimalType])) {
       return e.dataType
     }

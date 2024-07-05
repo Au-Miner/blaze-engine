@@ -69,6 +69,7 @@ import org.blaze.{protobuf => pb}
 abstract class NativeBroadcastExchangeBase(mode: BroadcastMode, override val child: SparkPlan)
     extends BroadcastExchangeLike
     with NativeSupports {
+  println("=====100")
 
   override def output: Seq[Attribute] = child.output
   override def outputPartitioning: Partitioning = BroadcastPartitioning(mode)
@@ -93,16 +94,19 @@ abstract class NativeBroadcastExchangeBase(mode: BroadcastMode, override val chi
       ("broadcastTime", SQLMetrics.createTimingMetric(sparkContext, "time to broadcast")): _*)
 
   override protected def doExecute(): RDD[InternalRow] = {
+    println("=====101")
     throw new UnsupportedOperationException(
       "BroadcastExchange does not support the execute() code path.")
   }
 
   override def doPrepare(): Unit = {
+    println("=====102")
     // Materialize the future.
     relationFuture
   }
 
   override def doExecuteBroadcast[T](): Broadcast[T] = {
+    println("=====103")
     val singlePartition = new Partition() {
       override def index: Int = 0
     }
@@ -137,6 +141,7 @@ abstract class NativeBroadcastExchangeBase(mode: BroadcastMode, override val chi
   }
 
   def doExecuteBroadcastNative[T](): broadcast.Broadcast[T] = {
+    println("=====104")
     val conf = SparkSession.getActiveSession.map(_.sqlContext.conf).orNull
     val timeout: Long = conf.broadcastTimeout
     try {
@@ -153,6 +158,7 @@ abstract class NativeBroadcastExchangeBase(mode: BroadcastMode, override val chi
   }
 
   override def doExecuteNative(): NativeRDD = {
+    println("=====105")
     val broadcast = doExecuteBroadcastNative[Array[Array[Byte]]]()
     val nativeMetrics = MetricNode(metrics, Nil)
     val partitions = Array(new Partition() {
@@ -189,6 +195,7 @@ abstract class NativeBroadcastExchangeBase(mode: BroadcastMode, override val chi
   }
 
   def collectNative(): Array[Array[Byte]] = {
+    println("=====106")
     val inputRDD = NativeHelper.executeNative(child match {
       case child if NativeHelper.isNative(child) => child
       case child => Shims.get.createConvertToNativeExec(child)
@@ -273,8 +280,10 @@ abstract class NativeBroadcastExchangeBase(mode: BroadcastMode, override val chi
     }
   }
 
-  override protected def doCanonicalize(): SparkPlan =
+  override protected def doCanonicalize(): SparkPlan = {
+    println("=====107")
     Shims.get.createNativeBroadcastExchangeExec(mode.canonicalized, child.canonicalized)
+  }
 }
 
 object NativeBroadcastExchangeBase {
@@ -285,6 +294,7 @@ object NativeBroadcastExchangeBase {
       collectedData: Array[Array[Byte]],
       keys: Seq[Expression],
       nativeSchema: pb.Schema): Array[Array[Byte]] = {
+    println("=====108")
 
     val readerIpcProviderResourceId = s"BuildBroadcastDataReader:${UUID.randomUUID()}"
     val readerExec = pb.IpcReaderExecNode

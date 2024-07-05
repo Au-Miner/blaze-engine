@@ -51,6 +51,7 @@ object BlazeConvertStrategy extends Logging {
 
   // 根据具体的SparkPlan物理计划，确定每个算子的转换策略
   def apply(exec: SparkPlan): Unit = {
+    println("=====41")
     exec.foreach(_.setTagValue(convertibleTag, true))
     exec.foreach(_.setTagValue(convertStrategyTag, Default))
 
@@ -90,7 +91,7 @@ object BlazeConvertStrategy extends Logging {
         .zip(exec.requiredChildOrdering)
         .foreach { case (child, requiredOrdering) =>
           if (requiredOrdering.nonEmpty) {
-            logInfo(s"physical plan [${child.nodeName}] requires ordering: $requiredOrdering")
+            println(s"physical plan [${child.nodeName}] requires ordering: $requiredOrdering")
             child.setTagValue(childOrderingRequiredTag, true)
           }
         }
@@ -156,14 +157,17 @@ object BlazeConvertStrategy extends Logging {
   }
 
   def isNeverConvert(exec: SparkPlan): Boolean = {
+    println("=====42")
     exec.getTagValue(convertStrategyTag).contains(NeverConvert)
   }
 
   def isAlwaysConvert(exec: SparkPlan): Boolean = {
+    println("=====43")
     exec.getTagValue(convertStrategyTag).contains(AlwaysConvert)
   }
 
   private def removeInefficientConverts(exec: SparkPlan): Unit = {
+    println("=====44")
     var finished = false
 
     while (!finished) {

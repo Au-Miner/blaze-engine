@@ -19,10 +19,12 @@ package org.apache.spark.sql.execution.blaze.plan;
 @SuppressWarnings("unused")
 public class NativeParquetSinkUtils {
     public static String getTaskOutputPath() throws InterruptedException {
+        System.out.println("=====211");
         return ParquetSinkTaskContext$.MODULE$.get().processingOutputFiles().take();
     }
 
     public static void completeOutput(String path, long numRows, long numFiles) {
+        System.out.println("=====212");
         OutputFileStat stat = new OutputFileStat(path, numRows, numFiles);
         ParquetSinkTaskContext$.MODULE$.get().processedOutputFiles().push(stat);
     }

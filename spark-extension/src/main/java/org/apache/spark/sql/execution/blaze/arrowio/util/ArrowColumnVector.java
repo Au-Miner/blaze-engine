@@ -153,6 +153,7 @@ public final class ArrowColumnVector extends ColumnVector {
 
     public ArrowColumnVector(ValueVector vector) {
         super(ArrowUtils.fromArrowField(vector.getField()));
+        System.out.println("=====210");
 
         if (vector instanceof BitVector) {
             accessor = new BooleanAccessor((BitVector) vector);

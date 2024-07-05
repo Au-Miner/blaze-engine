@@ -26,12 +26,14 @@ import org.apache.spark.sql.types._
 object ArrowWriter {
 
   def create(schema: StructType): ArrowWriter = {
+    println("=====83")
     val arrowSchema = ArrowUtils.toArrowSchema(schema)
     val root = VectorSchemaRoot.create(arrowSchema, ArrowUtils.rootAllocator)
     create(root)
   }
 
   def create(root: VectorSchemaRoot): ArrowWriter = {
+    println("=====84")
     val children = root.getFieldVectors().asScala.map { vector =>
       vector.allocateNew()
       createFieldWriter(vector)
@@ -40,6 +42,7 @@ object ArrowWriter {
   }
 
   private def createFieldWriter(vector: ValueVector): ArrowFieldWriter = {
+    println("=====85")
     val field = vector.getField()
     (ArrowUtils.fromArrowField(field), vector) match {
       case (NullType, vector: NullVector) => new NullWriter(vector)
@@ -78,6 +81,7 @@ object ArrowWriter {
 }
 
 class ArrowWriter(val root: VectorSchemaRoot, fields: Array[ArrowFieldWriter]) {
+  println("=====86")
 
   def schema: StructType =
     StructType(fields.map { f =>
@@ -108,6 +112,7 @@ class ArrowWriter(val root: VectorSchemaRoot, fields: Array[ArrowFieldWriter]) {
 }
 
 private[sql] abstract class ArrowFieldWriter {
+  println("=====87")
 
   def valueVector: ValueVector
 

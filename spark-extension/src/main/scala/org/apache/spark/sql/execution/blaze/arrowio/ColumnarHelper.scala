@@ -26,6 +26,7 @@ import org.apache.spark.util.CompletionIterator
 
 object ColumnarHelper {
   def rootAsBatch(root: VectorSchemaRoot): ColumnarBatch = {
+    println("=====90")
     val columns = root.getFieldVectors.asScala.map { vector =>
       new ArrowColumnVector(vector).asInstanceOf[ColumnVector]
     }.toArray
@@ -35,6 +36,7 @@ object ColumnarHelper {
   }
 
   def batchAsRowIter(batch: ColumnarBatch): Iterator[InternalRow] = {
+    println("=====91")
     CompletionIterator[InternalRow, Iterator[InternalRow]](
       batch.rowIterator().asScala,
       batch.close())

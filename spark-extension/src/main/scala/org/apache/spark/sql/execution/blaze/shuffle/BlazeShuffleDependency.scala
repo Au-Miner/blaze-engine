@@ -49,8 +49,10 @@ class BlazeShuffleDependency[K: ClassTag, V: ClassTag, C: ClassTag](
       shuffleWriterProcessor) {}
 
 object BlazeShuffleDependency extends Logging {
+  println("=====111")
   // 判断是否属于BlazeShuffleDependency依赖
   def isArrowShuffle(handle: ShuffleHandle): Boolean = {
+    println("=====112")
     val base = handle.asInstanceOf[BaseShuffleHandle[_, _, _]]
     val dep = base.dependency
     dep.isInstanceOf[BlazeShuffleDependency[_, _, _]]

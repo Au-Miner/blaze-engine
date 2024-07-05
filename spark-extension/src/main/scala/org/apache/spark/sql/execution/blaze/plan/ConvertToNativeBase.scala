@@ -60,6 +60,7 @@ abstract class ConvertToNativeBase(override val child: SparkPlan)
   val nativeSchema: Schema = NativeConverters.convertSchema(renamedSchema)
 
   override def doExecuteNative(): NativeRDD = {
+    println("=====92")
     val inputRDD = child.execute()
     val numInputPartitions = inputRDD.getNumPartitions
     val nativeMetrics = MetricNode(metrics, Nil)

@@ -22,18 +22,22 @@ import org.apache.spark.sql.hive.HiveUDAFFunction
 
 object HiveUDFUtil extends Logging {
   def isHiveUDF(expression: Expression): Boolean = {
+    println("=====114")
     isHiveSimpleUDF(expression) || isHiveGenericUDF(expression)
   }
 
   def isHiveSimpleUDF(expression: Expression): Boolean = {
+    println("=====115")
     expression.isInstanceOf[HiveSimpleUDF]
   }
 
   def isHiveGenericUDF(expression: Expression): Boolean = {
+    println("=====116")
     expression.isInstanceOf[HiveGenericUDF]
   }
 
   def getFunctionClassName(expression: Expression): Option[String] = {
+    println("=====117")
     expression match {
       case e: HiveSimpleUDF => Some(e.funcWrapper.functionClassName)
       case e: HiveGenericUDF => Some(e.funcWrapper.functionClassName)

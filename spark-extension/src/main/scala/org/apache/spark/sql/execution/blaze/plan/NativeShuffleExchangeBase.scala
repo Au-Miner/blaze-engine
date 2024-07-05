@@ -56,6 +56,7 @@ abstract class NativeShuffleExchangeBase(
     override val child: SparkPlan)
     extends ShuffleExchangeLike
     with NativeSupports {
+  println("=====179")
 
   override val nodeName: String = "NativeShuffleExchange"
 
@@ -86,10 +87,13 @@ abstract class NativeShuffleExchangeBase(
 
   def nativeSchema: Schema = Util.getNativeSchema(child.output)
 
-  private def nativeHashExprs = outputPartitioning match {
-    case HashPartitioning(expressions, _) =>
-      expressions.map(expr => NativeConverters.convertExpr(expr)).toList
-    case _ => null
+  private def nativeHashExprs = {
+    println("=====180")
+    outputPartitioning match {
+      case HashPartitioning(expressions, _) =>
+        expressions.map(expr => NativeConverters.convertExpr(expr)).toList
+      case _ => null
+    }
   }
 
   // check whether native converting is supported
@@ -99,6 +103,7 @@ abstract class NativeShuffleExchangeBase(
   protected def doExecuteNonNative(): RDD[InternalRow]
 
   override def doExecuteNative(): NativeRDD = {
+    println("=====181")
     val shuffleHandle = shuffleDependency.shuffleHandle
     val rdd = doExecuteNonNative()
 
@@ -164,6 +169,7 @@ abstract class NativeShuffleExchangeBase(
       outputPartitioning: Partitioning,
       serializer: Serializer,
       metrics: Map[String, SQLMetric]): ShuffleDependency[Int, InternalRow, InternalRow] = {
+    println("=====182")
 
     val nativeInputRDD = rdd.asInstanceOf[NativeRDD]
     val numPartitions = outputPartitioning.numPartitions

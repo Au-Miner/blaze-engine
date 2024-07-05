@@ -27,6 +27,7 @@ import org.apache.hadoop.fs.FSDataOutputStream;
 public class JniUtil {
     public static void readFullyFromFSDataInputStream(FSDataInputStream in, long pos, ByteBuffer buf)
             throws IOException {
+        System.out.println("=====208");
 
         synchronized (in) {
             if (pos != in.getPos()) {
@@ -43,6 +44,7 @@ public class JniUtil {
     }
 
     public static void writeFullyToFSDataOutputStream(FSDataOutputStream out, ByteBuffer buf) throws IOException {
+        System.out.println("=====209");
 
         synchronized (out) {
             WritableByteChannel channel = Channels.newChannel(out);

@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/blaze-engine.iml" filepath="$PROJECT_DIR$/blaze-engine.iml" />
-      <module fileurl="file://$PROJECT_DIR$/spark-extension-shims-spark333/spark-extension-shims-spark333.iml" filepath="$PROJECT_DIR$/spark-extension-shims-spark333/spark-extension-shims-spark333.iml" />
     </modules>
   </component>
 </project>

@@ -52,6 +52,7 @@ import org.apache.spark.util.SerializableConfiguration
 abstract class NativeParquetScanBase(basedFileScan: FileSourceScanExec)
     extends LeafExecNode
     with NativeSupports {
+  println("=====173")
 
   override lazy val metrics: Map[String, SQLMetric] = SortedMap[String, SQLMetric]() ++ Map(
     NativeHelper
@@ -86,11 +87,15 @@ abstract class NativeParquetScanBase(basedFileScan: FileSourceScanExec)
     .map(identity) // make this map serializable
 
   // 创建native剪枝谓词过滤器（没看明白）
-  private def nativePruningPredicateFilters = basedFileScan.dataFilters
-    .map(expr => NativeConverters.convertScanPruningExpr(expr))
+  private def nativePruningPredicateFilters = {
+    println("=====174")
+    basedFileScan.dataFilters
+      .map(expr => NativeConverters.convertScanPruningExpr(expr))
+  }
 
   // 创建native表元数据
-  private def nativeFileSchema =
+  private def nativeFileSchema = {
+    println("=====175")
     NativeConverters.convertSchema(StructType(basedFileScan.relation.dataSchema.map {
       case field if basedFileScan.requiredSchema.exists(_.name == field.name) =>
         field.copy(nullable = true)
@@ -98,12 +103,16 @@ abstract class NativeParquetScanBase(basedFileScan: FileSourceScanExec)
         // avoid converting unsupported type in non-used fields
         StructField(field.name, NullType, nullable = true)
     }))
+  }
 
-  private def nativePartitionSchema =
+  private def nativePartitionSchema = {
+    println("=====176")
     NativeConverters.convertSchema(partitionSchema)
+  }
 
   // 将所有FilePartition（包含了数据）转为nativeFileGroup
   private def nativeFileGroups = (partition: FilePartition) => {
+    println("=====177")
     // list input file statuses
     val nativePartitionedFile = (file: PartitionedFile) => {
       val nativePartitionValues = partitionSchema.zipWithIndex.map { case (field, index) =>
@@ -140,6 +149,7 @@ abstract class NativeParquetScanBase(basedFileScan: FileSourceScanExec)
   nativeFileGroups
 
   override def doExecuteNative(): NativeRDD = {
+    println("=====178")
     val partitions = inputFileScanRDD.filePartitions.toArray
     val nativeMetrics = MetricNode(
       metrics,

@@ -115,11 +115,14 @@ class ShimsImpl extends Shims with Logging {
 
   // 向sparksql注入sparkplan验证器
   override def initExtension(): Unit = {
+    println("=====119")
     ValidateSparkPlanInjector.inject()
   }
 
-  override def createConvertToNativeExec(child: SparkPlan): ConvertToNativeBase =
+  override def createConvertToNativeExec(child: SparkPlan): ConvertToNativeBase = {
+    println("=====120")
     ConvertToNativeExec(child)
+  }
 
   override def createNativeAggExec(
       execMode: AggExecMode,
@@ -128,7 +131,8 @@ class ShimsImpl extends Shims with Logging {
       aggregateExpressions: Seq[AggregateExpression],
       aggregateAttributes: Seq[Attribute],
       initialInputBufferOffset: Int,
-      child: SparkPlan): NativeAggBase =
+      child: SparkPlan): NativeAggBase = {
+    println("=====121")
     NativeAggExec(
       execMode,
       requiredChildDistributionExpressions,
@@ -137,11 +141,14 @@ class ShimsImpl extends Shims with Logging {
       aggregateAttributes,
       initialInputBufferOffset,
       child)
+  }
 
   override def createNativeBroadcastExchangeExec(
       mode: BroadcastMode,
-      child: SparkPlan): NativeBroadcastExchangeBase =
+      child: SparkPlan): NativeBroadcastExchangeBase = {
+    println("=====122")
     NativeBroadcastExchangeExec(mode, child)
+  }
 
   override def createNativeBroadcastJoinExec(
       left: SparkPlan,
@@ -150,7 +157,8 @@ class ShimsImpl extends Shims with Logging {
       leftKeys: Seq[Expression],
       rightKeys: Seq[Expression],
       joinType: JoinType,
-      broadcastSide: BroadcastSide): NativeBroadcastJoinBase =
+      broadcastSide: BroadcastSide): NativeBroadcastJoinBase = {
+    println("=====123")
     NativeBroadcastJoinExec(
       left,
       right,
@@ -159,6 +167,7 @@ class ShimsImpl extends Shims with Logging {
       rightKeys,
       joinType,
       broadcastSide)
+  }
 
   override def createNativeSortMergeJoinExec(
       left: SparkPlan,
@@ -166,95 +175,130 @@ class ShimsImpl extends Shims with Logging {
       leftKeys: Seq[Expression],
       rightKeys: Seq[Expression],
       joinType: JoinType,
-      condition: Option[Expression]): NativeSortMergeJoinBase =
+      condition: Option[Expression]): NativeSortMergeJoinBase = {
+    println("=====124")
     NativeSortMergeJoinExec(left, right, leftKeys, rightKeys, joinType, condition)
+  }
 
   override def createNativeExpandExec(
       projections: Seq[Seq[Expression]],
       output: Seq[Attribute],
-      child: SparkPlan): NativeExpandBase =
+      child: SparkPlan): NativeExpandBase = {
+    println("=====125")
     NativeExpandExec(projections, output, child)
+  }
 
-  override def createNativeFilterExec(condition: Expression, child: SparkPlan): NativeFilterBase =
+  override def createNativeFilterExec(condition: Expression, child: SparkPlan): NativeFilterBase = {
+    println("=====126")
     NativeFilterExec(condition, child)
+  }
 
   override def createNativeGenerateExec(
       generator: Generator,
       requiredChildOutput: Seq[Attribute],
       outer: Boolean,
       generatorOutput: Seq[Attribute],
-      child: SparkPlan): NativeGenerateBase =
+      child: SparkPlan): NativeGenerateBase = {
+    println("=====127")
     NativeGenerateExec(generator, requiredChildOutput, outer, generatorOutput, child)
+  }
 
-  override def createNativeGlobalLimitExec(limit: Long, child: SparkPlan): NativeGlobalLimitBase =
+  override def createNativeGlobalLimitExec(limit: Long, child: SparkPlan): NativeGlobalLimitBase = {
+    println("=====128")
     NativeGlobalLimitExec(limit, child)
+  }
 
-  override def createNativeLocalLimitExec(limit: Long, child: SparkPlan): NativeLocalLimitBase =
+  override def createNativeLocalLimitExec(limit: Long, child: SparkPlan): NativeLocalLimitBase = {
+    println("=====129")
     NativeLocalLimitExec(limit, child)
+  }
 
   override def createNativeParquetInsertIntoHiveTableExec(
       cmd: InsertIntoHiveTable,
-      child: SparkPlan): NativeParquetInsertIntoHiveTableBase =
+      child: SparkPlan): NativeParquetInsertIntoHiveTableBase = {
+    println("=====130")
     NativeParquetInsertIntoHiveTableExec(cmd, child)
+  }
 
   override def createNativeParquetScanExec(
-      basedFileScan: FileSourceScanExec): NativeParquetScanBase =
+      basedFileScan: FileSourceScanExec): NativeParquetScanBase = {
+    println("=====131")
     NativeParquetScanExec(basedFileScan)
+  }
 
   override def createNativeProjectExec(
       projectList: Seq[NamedExpression],
       child: SparkPlan,
-      addTypeCast: Boolean = false): NativeProjectBase =
+      addTypeCast: Boolean = false): NativeProjectBase = {
+    println("=====132")
     NativeProjectExec(projectList, child, addTypeCast)
+  }
 
   override def createNativeRenameColumnsExec(
       child: SparkPlan,
-      newColumnNames: Seq[String]): NativeRenameColumnsBase =
+      newColumnNames: Seq[String]): NativeRenameColumnsBase = {
+    println("=====133")
     NativeRenameColumnsExec(child, newColumnNames)
+  }
 
   override def createNativeShuffleExchangeExec(
       outputPartitioning: Partitioning,
-      child: SparkPlan): NativeShuffleExchangeBase =
+      child: SparkPlan): NativeShuffleExchangeBase = {
+    println("=====134")
     NativeShuffleExchangeExec(outputPartitioning, child)
+  }
 
   override def createNativeSortExec(
       sortOrder: Seq[SortOrder],
       global: Boolean,
-      child: SparkPlan): NativeSortBase =
+      child: SparkPlan): NativeSortBase = {
+    println("=====135")
     NativeSortExec(sortOrder, global, child)
+  }
 
   override def createNativeTakeOrderedExec(
       limit: Long,
       sortOrder: Seq[SortOrder],
-      child: SparkPlan): NativeTakeOrderedBase =
+      child: SparkPlan): NativeTakeOrderedBase = {
+    println("=====136")
     NativeTakeOrderedExec(limit, sortOrder, child)
+  }
 
   override def createNativePartialTakeOrderedExec(
       limit: Long,
       sortOrder: Seq[SortOrder],
       child: SparkPlan,
-      metrics: Map[String, SQLMetric]): NativePartialTakeOrderedBase =
+      metrics: Map[String, SQLMetric]): NativePartialTakeOrderedBase = {
+    println("=====137")
     NativePartialTakeOrderedExec(limit, sortOrder, child, metrics)
+  }
 
-  override def createNativeUnionExec(children: Seq[SparkPlan]): NativeUnionBase =
+  override def createNativeUnionExec(children: Seq[SparkPlan]): NativeUnionBase = {
+    println("=====138")
     NativeUnionExec(children)
+  }
 
   override def createNativeWindowExec(
       windowExpression: Seq[NamedExpression],
       partitionSpec: Seq[Expression],
       orderSpec: Seq[SortOrder],
-      child: SparkPlan): NativeWindowBase =
+      child: SparkPlan): NativeWindowBase = {
+    println("=====139")
     NativeWindowExec(windowExpression, partitionSpec, orderSpec, child)
+  }
 
   override def createNativeParquetSinkExec(
       sparkSession: SparkSession,
       table: CatalogTable,
       partition: Map[String, Option[String]],
       child: SparkPlan,
-      metrics: Map[String, SQLMetric]): NativeParquetSinkBase =
+      metrics: Map[String, SQLMetric]): NativeParquetSinkBase = {
+    println("=====140")
     NativeParquetSinkExec(sparkSession, table, partition, child, metrics)
+  }
 
   override def getUnderlyingBroadcast(plan: SparkPlan): BroadcastExchangeLike = {
+    println("=====141")
     plan match {
       case exec: BroadcastExchangeLike => exec
       case exec: UnaryExecNode => getUnderlyingBroadcast(exec.child)
@@ -264,7 +308,8 @@ class ShimsImpl extends Shims with Logging {
   }
 
   // 通过有无实现NativeSupports的trait来判断是否为native方法
-  override def isNative(plan: SparkPlan): Boolean =
+  override def isNative(plan: SparkPlan): Boolean = {
+    println("=====142")
     plan match {
       case _: NativeSupports => true
       case plan: AQEShuffleReadExec => isNative(plan.child)
@@ -272,8 +317,10 @@ class ShimsImpl extends Shims with Logging {
       case plan: ReusedExchangeExec => isNative(plan.child)
       case _ => false
     }
+  }
 
   override def getUnderlyingNativePlan(plan: SparkPlan): NativeSupports = {
+    println("=====143")
     plan match {
       case plan: NativeSupports => plan
       case plan: AQEShuffleReadExec => getUnderlyingNativePlan(plan.child)
@@ -284,6 +331,7 @@ class ShimsImpl extends Shims with Logging {
   }
 
   override def executeNative(plan: SparkPlan): NativeRDD = {
+    println("=====144")
     plan match {
       case plan: NativeSupports => plan.executeNative()
       case plan: AQEShuffleReadExec => executeNativeAQEShuffleReader(plan)
@@ -295,32 +343,48 @@ class ShimsImpl extends Shims with Logging {
   }
 
   override def isQueryStageInput(plan: SparkPlan): Boolean = {
+    println("=====145")
     plan.isInstanceOf[QueryStageExec]
   }
 
   override def isShuffleQueryStageInput(plan: SparkPlan): Boolean = {
+    println("=====146")
     plan.isInstanceOf[ShuffleQueryStageExec]
   }
 
-  override def getChildStage(plan: SparkPlan): SparkPlan =
+  override def getChildStage(plan: SparkPlan): SparkPlan = {
+    println("=====147")
     plan.asInstanceOf[QueryStageExec].plan
+  }
 
-  override def simpleStringWithNodeId(plan: SparkPlan): String = plan.simpleStringWithNodeId()
+  override def simpleStringWithNodeId(plan: SparkPlan): String = {
+    println("=====148")
+    plan.simpleStringWithNodeId()
+  }
 
   override def setLogicalLink(exec: SparkPlan, basedExec: SparkPlan): SparkPlan = {
+    println("=====149")
     basedExec.logicalLink.foreach(logicalLink => exec.setLogicalLink(logicalLink))
     exec
   }
 
-  override def getRDDShuffleReadFull(rdd: RDD[_]): Boolean = true
+  override def getRDDShuffleReadFull(rdd: RDD[_]): Boolean = {
+    println("=====150")
+    true
+  }
 
-  override def setRDDShuffleReadFull(rdd: RDD[_], shuffleReadFull: Boolean): Unit = {}
+  override def setRDDShuffleReadFull(rdd: RDD[_], shuffleReadFull: Boolean): Unit = {
+    println("=====151")
+  }
 
   override def createFileSegment(
       file: File,
       offset: Long,
       length: Long,
-      numRecords: Long): FileSegment = new FileSegment(file, offset, length)
+      numRecords: Long): FileSegment = {
+    println("=====152")
+    new FileSegment(file, offset, length)
+  }
 
   override def commit(
       dep: ShuffleDependency[_, _, _],
@@ -330,6 +394,7 @@ class ShimsImpl extends Shims with Logging {
       partitionLengths: Array[Long],
       dataSize: Long,
       context: TaskContext): MapStatus = {
+    println("=====153")
 
     val checksums = Array[Long]()
     shuffleBlockResolver.writeMetadataFileAndCommit(
@@ -345,17 +410,23 @@ class ShimsImpl extends Shims with Logging {
       handle: ShuffleHandle,
       mapId: Int,
       metrics: ShuffleWriteMetricsReporter,
-      numPartitions: Int): Option[RssPartitionWriterBase] = None
+      numPartitions: Int): Option[RssPartitionWriterBase] = {
+    println("=====154")
+    None
+  }
 
   override def getMapStatus(
       shuffleServerId: BlockManagerId,
       partitionLengthMap: Array[Long],
-      mapId: Long): MapStatus =
+      mapId: Long): MapStatus = {
+    println("=====155")
     MapStatus.apply(shuffleServerId, partitionLengthMap, mapId)
+  }
 
   override def getShuffleWriteExec(
       input: pb.PhysicalPlanNode,
       nativeOutputPartitioning: pb.PhysicalHashRepartition.Builder): pb.PhysicalPlanNode = {
+    println("=====156")
     pb.PhysicalPlanNode
       .newBuilder()
       .setShuffleWriter(
@@ -369,6 +440,7 @@ class ShimsImpl extends Shims with Logging {
   }
 
   override def convertExpr(e: Expression): Option[pb.PhysicalExprNode] = {
+    println("=====157")
     e match {
       case StringSplit(str, pat @ Literal(_, StringType), Literal(-1, IntegerType))
           // native StringSplit implementation does not support regex, so only most frequently
@@ -397,10 +469,12 @@ class ShimsImpl extends Shims with Logging {
   }
 
   override def getLikeEscapeChar(expr: Expression): Char = {
+    println("=====158")
     expr.asInstanceOf[Like].escapeChar
   }
 
   override def convertAggregateExpr(e: AggregateExpression): Option[pb.PhysicalExprNode] = {
+    println("=====159")
     assert(getAggregateExpressionFilter(e).isEmpty)
     val aggBuilder = pb.PhysicalAggExprNode.newBuilder()
 
@@ -419,10 +493,12 @@ class ShimsImpl extends Shims with Logging {
   }
 
   override def getAggregateExpressionFilter(expr: Expression): Option[Expression] = {
+    println("=====160")
     expr.asInstanceOf[AggregateExpression].filter
   }
 
   private def executeNativeAQEShuffleReader(exec: AQEShuffleReadExec): NativeRDD = {
+    println("=====161")
     exec match {
       case AQEShuffleReadExec(child, _) if isNative(child) =>
         val shuffledRDD = exec.execute().asInstanceOf[ShuffledRowRDD]
@@ -509,6 +585,7 @@ class ShimsImpl extends Shims with Logging {
   }
 
   override def convertMoreSparkPlan(exec: SparkPlan): Option[SparkPlan] = {
+    println("=====162")
     exec match {
       case _: AQEShuffleReadExec | _: ReusedExchangeExec if isNative(exec) =>
         Some(ForceNativeExecutionWrapper(BlazeConverters.addRenameColumnsExec(exec)))
@@ -517,21 +594,27 @@ class ShimsImpl extends Shims with Logging {
     }
   }
 
-  override def getSqlContext(sparkPlan: SparkPlan): SQLContext =
+  override def getSqlContext(sparkPlan: SparkPlan): SQLContext = {
+    println("=====163")
     sparkPlan.session.sqlContext
+  }
 
   override def createNativeExprWrapper(
       nativeExpr: pb.PhysicalExprNode,
       dataType: DataType,
       nullable: Boolean): Expression = {
+    println("=====164")
     NativeExprWrapper(nativeExpr, dataType, nullable)
   }
 }
 
 case class ForceNativeExecutionWrapper(override val child: SparkPlan)
     extends ForceNativeExecutionWrapperBase(child) {
-  override def withNewChildInternal(newChild: SparkPlan): SparkPlan =
+  println("=====165")
+  override def withNewChildInternal(newChild: SparkPlan): SparkPlan = {
+    println("=====166")
     copy(child = newChild)
+  }
 }
 
 case class NativeExprWrapper(
@@ -539,5 +622,9 @@ case class NativeExprWrapper(
     override val dataType: DataType,
     override val nullable: Boolean)
     extends NativeExprWrapperBase(nativeExpr, dataType, nullable) {
-  override def withNewChildrenInternal(newChildren: IndexedSeq[Expression]): Expression = copy()
+  println("=====167")
+  override def withNewChildrenInternal(newChildren: IndexedSeq[Expression]): Expression = {
+    println("=====168")
+    copy()
+  }
 }

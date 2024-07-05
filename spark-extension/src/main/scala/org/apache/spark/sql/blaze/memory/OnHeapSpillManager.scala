@@ -44,7 +44,7 @@ class OnHeapSpillManager(taskContext: TaskContext)
   // release all spills on task completion
   taskContext.addTaskCompletionListener { _ =>
     synchronized {
-      logInfo(s"task completed, start releasing all holding spills (count=$numHoldingSpills)")
+      println(s"task completed, start releasing all holding spills (count=$numHoldingSpills)")
       spills.flatten.foreach(spill => releaseSpill(spill.id))
       all.remove(taskContext.taskAttemptId())
     }
@@ -64,7 +64,7 @@ class OnHeapSpillManager(taskContext: TaskContext)
     val memoryUsed = memoryPool.memoryUsed
     val memoryFree = memoryPool.memoryFree
     val memoryUsedRatio = (memoryUsed + 1.0) / (memoryUsed + memoryFree + 1.0)
-    logInfo(
+    println(
       s"current on-heap execution memory usage:" +
         s" used=${Utils.bytesToString(memoryUsed)}," +
         s" free=${Utils.bytesToString(memoryFree)}," +
@@ -83,7 +83,7 @@ class OnHeapSpillManager(taskContext: TaskContext)
       spills.append(Some(spill))
       numHoldingSpills += 1
 
-      logInfo(s"allocated a spill, task=${taskContext.taskAttemptId}, id=${spill.id}")
+      println(s"allocated a spill, task=${taskContext.taskAttemptId}, id=${spill.id}")
       dumpStatus()
       spill.id
     }
@@ -118,7 +118,7 @@ class OnHeapSpillManager(taskContext: TaskContext)
       case Some(spill) =>
         spill.release()
         numHoldingSpills -= 1
-        logInfo(s"released a spill, task=${taskContext.taskAttemptId}, id=$spillId")
+        println(s"released a spill, task=${taskContext.taskAttemptId}, id=$spillId")
         dumpStatus()
       case None =>
     }
@@ -129,7 +129,7 @@ class OnHeapSpillManager(taskContext: TaskContext)
     if (memUsed == 0) {
       return 0L
     }
-    logInfo(s"starts spilling to disk, size=${Utils.bytesToString(size)}}")
+    println(s"starts spilling to disk, size=${Utils.bytesToString(size)}}")
     dumpStatus()
     var totalFreed = 0L
 
@@ -145,14 +145,14 @@ class OnHeapSpillManager(taskContext: TaskContext)
         }
       }
     } {
-      logInfo(s"finished spilling to disk, freed=${Utils.bytesToString(totalFreed)}")
+      println(s"finished spilling to disk, freed=${Utils.bytesToString(totalFreed)}")
       dumpStatus()
     }
     totalFreed
   }
 
   private def dumpStatus(): Unit = {
-    logInfo(
+    println(
       "status" +
         s": numHoldingSpills=$numHoldingSpills" +
         s", memUsed=${Utils.bytesToString(memUsed)}")

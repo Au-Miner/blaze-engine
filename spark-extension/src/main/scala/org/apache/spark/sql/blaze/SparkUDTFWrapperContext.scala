@@ -37,6 +37,7 @@ import org.apache.spark.sql.types.StructField
 import org.apache.spark.sql.types.StructType
 
 case class SparkUDTFWrapperContext(serialized: ByteBuffer) extends Logging {
+  println("=====73")
   private val (expr, javaParamsSchema) = NativeConverters.deserializeExpression[Generator]({
     val bytes = new Array[Byte](serialized.remaining())
     serialized.get(bytes)
@@ -64,6 +65,7 @@ case class SparkUDTFWrapperContext(serialized: ByteBuffer) extends Logging {
   }
 
   def eval(importFFIArrayPtr: Long, exportFFIArrayPtr: Long): Unit = {
+    println("=====74")
     Using.resource(ArrowUtils.newChildAllocator(getClass.getName)) { batchAllocator =>
       Using.resources(
         VectorSchemaRoot.create(outputSchema, batchAllocator),

@@ -44,6 +44,7 @@ abstract class BlazeBlockStoreShuffleReaderBase[K, C](
   protected def readBlocks(): Iterator[(BlockId, InputStream)]
 
   def readIpc(): Iterator[Object] = { // FileSegment | ReadableByteChannel
+    println("=====109")
     val ipcIterator = readBlocks().map { case (_, inputStream) =>
       getFileSegmentFromInputStream(inputStream) match {
         case Some(fileSegment) =>
@@ -77,6 +78,7 @@ object BlazeBlockStoreShuffleReaderBase {
   pathField.setAccessible(true)
 
   def getFileSegmentFromInputStream(in: InputStream): Option[FileSegment] = {
+    println("=====110")
     if (!bufferReleasingInputStreamClass.isInstance(in)) {
       return None
     }

@@ -67,6 +67,7 @@ abstract class NativeAggBase(
     extends UnaryExecNode
     with NativeSupports
     with Logging {
+  println("=====215")
 
   override lazy val metrics: Map[String, SQLMetric] = SortedMap[String, SQLMetric]() ++ Map(
     NativeHelper
@@ -86,6 +87,7 @@ abstract class NativeAggBase(
       .toSeq: _*)
 
   override def requiredChildDistribution: List[Distribution] = {
+    println("=====93")
     requiredChildDistributionExpressions match {
       case Some(exprs) if exprs.isEmpty => AllTuples :: Nil
       case Some(exprs) => ClusteredDistribution(exprs) :: Nil
@@ -94,38 +96,61 @@ abstract class NativeAggBase(
   }
 
   override def requiredChildOrdering: Seq[Seq[SortOrder]] = if (execMode == SortAgg) {
+    println("=====94")
     groupingExpressions.map(SortOrder(_, Ascending)) :: Nil
   } else {
     Seq(Nil)
   }
 
-  private def nativeAggrInfos: Seq[NativeAggrInfo] = aggregateExpressions
-    .zip(aggregateAttributes)
-    .map { case (aggr, aggrAttr) =>
-      NativeAggBase.getNativeAggrInfo(aggr, aggrAttr)
-    }
-
-  private def nativeExecMode: pb.AggExecMode = execMode match {
-    case HashAgg => pb.AggExecMode.HASH_AGG
-    case SortAgg => pb.AggExecMode.SORT_AGG
+  private def nativeAggrInfos: Seq[NativeAggrInfo] = {
+    println("=====216")
+    aggregateExpressions
+      .zip(aggregateAttributes)
+      .map { case (aggr, aggrAttr) =>
+        NativeAggBase.getNativeAggrInfo(aggr, aggrAttr)
+      }
   }
 
-  private def nativeAggrs = nativeAggrInfos.flatMap(_.nativeAggrs)
+  private def nativeExecMode: pb.AggExecMode = {
+    println("=====217")
+    execMode match {
+      case HashAgg => pb.AggExecMode.HASH_AGG
+      case SortAgg => pb.AggExecMode.SORT_AGG
+    }
+  }
 
-  private def nativeGroupingExprs = groupingExpressions.map(NativeConverters.convertExpr(_))
+  private def nativeAggrs = {
+    println("=====218")
+    nativeAggrInfos.flatMap(_.nativeAggrs)
+  }
 
-  private def nativeGroupingNames = groupingExpressions.map(Util.getFieldNameByExprId)
+  private def nativeGroupingExprs = {
+    println("=====219")
+    groupingExpressions.map(NativeConverters.convertExpr(_))
+  }
 
-  private def nativeAggrNames = nativeAggrInfos.map(_.outputAttr).map(_.name)
+  private def nativeGroupingNames = {
+    println("=====220")
+    groupingExpressions.map(Util.getFieldNameByExprId)
+  }
 
-  private def nativeAggrModes = nativeAggrInfos.map(_.mode match {
-    case Partial => pb.AggMode.PARTIAL
-    case PartialMerge => pb.AggMode.PARTIAL_MERGE
-    case Final => pb.AggMode.FINAL
-    case Complete =>
-      throw new NotImplementedError("aggrMode = Complete not yet supported")
-  })
+  private def nativeAggrNames = {
+    println("=====221")
+    nativeAggrInfos.map(_.outputAttr).map(_.name)
+  }
 
+  private def nativeAggrModes = {
+    println("=====222")
+    nativeAggrInfos.map(_.mode match {
+      case Partial => pb.AggMode.PARTIAL
+      case PartialMerge => pb.AggMode.PARTIAL_MERGE
+      case Final => pb.AggMode.FINAL
+      case Complete =>
+        throw new NotImplementedError("aggrMode = Complete not yet supported")
+    })
+  }
+
+  println("=====223")
   // check whether native converting is supported
   nativeAggrs
   nativeGroupingExprs
@@ -133,7 +158,8 @@ abstract class NativeAggBase(
   nativeAggrs
   nativeAggrModes
 
-  override def output: Seq[Attribute] =
+  override def output: Seq[Attribute] = {
+    println("=====224")
     if (nativeAggrModes.contains(pb.AggMode.FINAL)) {
       groupingExpressions.map(_.toAttribute) ++ aggregateAttributes
     } else {
@@ -141,9 +167,12 @@ abstract class NativeAggBase(
         AttributeReference(NativeAggBase.AGG_BUF_COLUMN_NAME, BinaryType, nullable = false)(
           ExprId.apply(NativeAggBase.AGG_BUF_COLUMN_EXPR_ID))
     }
+  }
 
-  override def outputPartitioning: Partitioning =
+  override def outputPartitioning: Partitioning = {
+    println("=====94")
     child.outputPartitioning
+  }
 
   private val supportsPartialSkipping = (
     BlazeConf.PARTIAL_AGG_SKIPPING_ENABLE.booleanConf()
@@ -158,6 +187,8 @@ abstract class NativeAggBase(
   )
 
   override def doExecuteNative(): NativeRDD = {
+    println("=====95")
+//    return null
     val inputRDD = NativeHelper.executeNative(child)
     val nativeMetrics = MetricNode(metrics, inputRDD.metrics :: Nil)
     val nativeExecMode = this.nativeExecMode
@@ -200,9 +231,11 @@ abstract class NativeAggBase(
     case HashAgg => "NativeHashAggregate"
     case SortAgg => "NativeSortAggregate"
   }
+  println("=====227")
 }
 
 object NativeAggBase extends Logging {
+  println("=====96")
 
   val AGG_BUF_COLUMN_EXPR_ID = 9223372036854775807L
   val AGG_BUF_COLUMN_NAME = s"#$AGG_BUF_COLUMN_EXPR_ID"
@@ -220,6 +253,7 @@ object NativeAggBase extends Logging {
         dataType: DataType,
         nullable: Boolean,
         arrowType: pb.ArrowType = null): NativeAggrPartialState = {
+      println("=====225")
 
       val fieldName = s"${Util.getFieldNameByExprId(aggrAttr)}[$stateFieldName]"
       val stateAttr = AttributeReference(fieldName, dataType, nullable)(aggrAttr.exprId)
@@ -235,6 +269,7 @@ object NativeAggBase extends Logging {
       outputAttr: Attribute)
 
   def getNativeAggrInfo(aggr: AggregateExpression, aggrAttr: Attribute): NativeAggrInfo = {
+    println("=====97")
     val reducedAggr = AggregateExpression(
       aggr.aggregateFunction
         .mapChildren(e => createPlaceholder(e))
@@ -261,6 +296,7 @@ object NativeAggBase extends Logging {
   }
 
   private def createPlaceholder(e: Expression): Expression = {
+    println("=====98")
     e match {
       case _: Literal => e // no need to create placeholder
       case _ =>
@@ -278,6 +314,7 @@ object NativeAggBase extends Logging {
   }
 
   def findPreviousNativeAggrExec(exec: SparkPlan): Option[NativeAggBase] = {
+    println("=====99")
     val isSortExec = exec.isInstanceOf[SortAggregateExec]
 
     @tailrec

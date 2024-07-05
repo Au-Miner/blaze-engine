@@ -36,34 +36,42 @@ public class JniBridge {
     public static native void finalizeNative(long ptr);
 
     public static ClassLoader getContextClassLoader() {
+        System.out.println("=====197");
         return Thread.currentThread().getContextClassLoader();
     }
 
     public static void setContextClassLoader(ClassLoader cl) {
+        System.out.println("=====198");
         Thread.currentThread().setContextClassLoader(cl);
     }
 
     public static String getSparkEnvConfAsString(String key) {
+        System.out.println("=====199");
         return SparkEnv.get().conf().get(key);
     }
 
     public static Object getResource(String key) {
+        System.out.println("=====200");
         return resourcesMap.remove(key);
     }
 
     public static TaskContext getTaskContext() {
+        System.out.println("=====201");
         return TaskContext$.MODULE$.get();
     }
 
     public static void setTaskContext(TaskContext tc) {
+        System.out.println("=====202");
         TaskContext$.MODULE$.setTaskContext(tc);
     }
 
     public static OnHeapSpillManager getTaskOnHeapSpillManager() {
+        System.out.println("=====203");
         return OnHeapSpillManager$.MODULE$.current();
     }
 
     public static boolean isTaskRunning() {
+        System.out.println("=====204");
         TaskContext tc = getTaskContext();
         if (tc == null) { // driver is always running
             return true;
@@ -72,6 +80,7 @@ public class JniBridge {
     }
 
     public static boolean isDriverSide() {
+        System.out.println("=====205");
         TaskContext tc = getTaskContext();
         return tc == null;
     }
@@ -80,12 +89,14 @@ public class JniBridge {
             ManagementFactory.getPlatformMXBeans(BufferPoolMXBean.class);
 
     public static long getDirectMemoryUsed() {
+        System.out.println("=====206");
         return directMXBeans.stream()
                 .mapToLong(BufferPoolMXBean::getTotalCapacity)
                 .sum();
     }
 
     public static String getDirectWriteSpillToDiskFile() {
+        System.out.println("=====207");
         return SparkEnv.get()
                 .blockManager()
                 .diskBlockManager()

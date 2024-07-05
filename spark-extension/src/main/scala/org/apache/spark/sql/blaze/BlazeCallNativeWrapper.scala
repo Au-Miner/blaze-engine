@@ -62,7 +62,9 @@ case class BlazeCallNativeWrapper(
   private val batchRows: ArrayBuffer[InternalRow] = ArrayBuffer()
   private var batchCurRowIdx = 0
 
-  logInfo(s"Start executing native plan")
+  println(s"Start executing native plan")
+  println("=====1")
+
   private var nativeRuntimePtr = JniBridge.callNative(NativeHelper.nativeMemory, this)
 
   private lazy val rowIterator = new Iterator[InternalRow] {
@@ -71,6 +73,7 @@ case class BlazeCallNativeWrapper(
       if (batchCurRowIdx < batchRows.length) {
         return true
       }
+      println("=====2")
 
       // clear current batch
       batchRows.clear()
@@ -84,17 +87,21 @@ case class BlazeCallNativeWrapper(
     }
 
     override def next(): InternalRow = {
+      println("=====3")
       checkError()
       val batchRow = batchRows(batchCurRowIdx)
       batchCurRowIdx += 1
+      println(s"wqlnb: 正在获取的batchRow为: $batchRow")
       batchRow
     }
   }
 
+  println("=====4")
   context.foreach(_.addTaskCompletionListener[Unit]((_: TaskContext) => close()))
   context.foreach(_.addTaskFailureListener((_, _) => close()))
 
   def getRowIterator: Iterator[InternalRow] = {
+    println("=====5")
     CompletionIterator[InternalRow, Iterator[InternalRow]](rowIterator, close())
   }
 
@@ -102,6 +109,7 @@ case class BlazeCallNativeWrapper(
     metrics
 
   protected def importSchema(ffiSchemaPtr: Long): Unit = {
+    println("=====6")
     Using.resource(ArrowUtils.newChildAllocator(getClass.getName)) { schemaAllocator =>
       Using.resource(ArrowSchema.wrap(ffiSchemaPtr)) { ffiSchema =>
         arrowSchema = Data.importSchema(schemaAllocator, ffiSchema, dictionaryProvider)
@@ -112,6 +120,7 @@ case class BlazeCallNativeWrapper(
   }
 
   protected def importBatch(ffiArrayPtr: Long): Unit = {
+    println("=====7")
     Using.resource(ArrowUtils.newChildAllocator(getClass.getName)) { batchAllocator =>
       Using.resources(
         ArrowArray.wrap(ffiArrayPtr),
@@ -128,10 +137,12 @@ case class BlazeCallNativeWrapper(
   }
 
   protected def setError(error: Throwable): Unit = {
+    println("=====8")
     this.error.set(error)
   }
 
   protected def checkError(): Unit = {
+    println("=====9")
     val throwable = error.getAndSet(null)
     if (throwable != null) {
       close()
@@ -140,6 +151,7 @@ case class BlazeCallNativeWrapper(
   }
 
   protected def getRawTaskDefinition: Array[Byte] = {
+    println("=====10")
     val partitionId: PartitionId = PartitionId
       .newBuilder()
       .setPartitionId(partition.index)
@@ -156,6 +168,7 @@ case class BlazeCallNativeWrapper(
   }
 
   private def close(): Unit = {
+    println("=====11")
     synchronized {
       batchRows.clear()
       batchCurRowIdx = 0
@@ -171,12 +184,13 @@ case class BlazeCallNativeWrapper(
 }
 
 object BlazeCallNativeWrapper extends Logging {
+  println("=====12")
   def initNative(): Unit = {
     lazyInitNative
   }
 
   private lazy val lazyInitNative: Unit = {
-    logInfo(
+    println(
       "Initializing native environment (" +
         s"batchSize=${BlazeConf.BATCH_SIZE.intConf()}, " +
         s"nativeMemory=${NativeHelper.nativeMemory}, " +
@@ -191,10 +205,13 @@ object BlazeCallNativeWrapper extends Logging {
       val tempFile = File.createTempFile("libblaze-", ".tmp")
       tempFile.deleteOnExit()
 
+      println(s"libName的内容为：${libName}")
+      println(s"classLoader.getResourceAsStream(libName)：${classLoader.getResourceAsStream(libName)}")
       Utils.tryWithResource(classLoader.getResourceAsStream(libName)) { is =>
         assert(is != null, s"cannot load $libName")
         Files.copy(is, tempFile.toPath, StandardCopyOption.REPLACE_EXISTING)
       }
+      println("wqlnb: 目前正在查找的tempFile.getAbsolutePath内容为：" + tempFile.getAbsolutePath)
       System.load(tempFile.getAbsolutePath)
 
     } catch {

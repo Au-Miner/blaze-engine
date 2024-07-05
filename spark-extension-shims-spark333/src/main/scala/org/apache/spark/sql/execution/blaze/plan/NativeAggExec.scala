@@ -44,8 +44,10 @@ case class NativeAggExec(
       initialInputBufferOffset,
       child)
     with BaseAggregateExec {
+  println("=====193")
 
-  override def output: Seq[Attribute] =
+  override def output: Seq[Attribute] = {
+    println("=====194")
     if (aggregateExpressions.map(_.mode).contains(Final)) {
       groupingExpressions.map(_.toAttribute) ++ aggregateAttributes
     } else {
@@ -53,13 +55,19 @@ case class NativeAggExec(
         AttributeReference(NativeAggBase.AGG_BUF_COLUMN_NAME, BinaryType, nullable = false)(
           ExprId.apply(NativeAggBase.AGG_BUF_COLUMN_EXPR_ID))
     }
+  }
 
-  override protected def withNewChildInternal(newChild: SparkPlan): SparkPlan =
+  override protected def withNewChildInternal(newChild: SparkPlan): SparkPlan = {
+    println("=====195")
     copy(child = newChild)
+  }
 
   override def isStreaming: Boolean = false
 
   override def numShufflePartitions: Option[Int] = None
 
-  override def resultExpressions: Seq[NamedExpression] = output
+  override def resultExpressions: Seq[NamedExpression] = {
+    println("=====196")
+    output
+  }
 }

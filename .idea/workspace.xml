@@ -7,42 +7,53 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fade0a81-93cf-4f1c-985d-ebf8b9d1e0d7" name="更改" comment="1、blaze3.0.0 init">
-      <change afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/resources/log4j2.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spark-extension/src/main/resources/log4j2.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+    <list default="true" id="fade0a81-93cf-4f1c-985d-ebf8b9d1e0d7" name="更改" comment="1、modify NativeSortMergeJoinBase.scala">
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spark-extension/spark-extension.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build-native.sh" beforeDir="false" afterPath="$PROJECT_DIR$/build-native.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/native-engine/blaze/src/exec.rs" beforeDir="false" afterPath="$PROJECT_DIR$/native-engine/blaze/src/exec.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/blaze/ShimsImpl.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/ConvertToNativeExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeAggExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeBroadcastExchangeExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeBroadcastJoinExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeExpandExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeFilterExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeGenerateExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeGlobalLimitExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeLocalLimitExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetInsertIntoHiveTableExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetScanExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetSinkExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativePartialTakeOrderedExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeProjectExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeRenameColumnsExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeShuffleExchangeExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeSortExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeSortMergeJoinExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeTakeOrderedExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeUnionExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeWindowExec.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeBlockStoreShuffleReader.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleManager.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark303/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleWriter.scala" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleManager.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleManager.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/java/org/apache/spark/sql/blaze/ValidateSparkPlanApplyInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/java/org/apache/spark/sql/blaze/ValidateSparkPlanApplyInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/java/org/apache/spark/sql/blaze/ValidateSparkPlanInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/java/org/apache/spark/sql/blaze/ValidateSparkPlanInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/resources/log4j2.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/blaze/InterceptedValidateSparkPlan.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/blaze/InterceptedValidateSparkPlan.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/blaze/ShimsImpl.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/blaze/ShimsImpl.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/ConvertToNativeExec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/ConvertToNativeExec.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeAggExec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeAggExec.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetScanExec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetScanExec.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeShuffleExchangeExec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeShuffleExchangeExec.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeBlockStoreShuffleReader.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension-shims-spark333/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeBlockStoreShuffleReader.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/blaze/JniBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/blaze/JniBridge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/blaze/JniUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/blaze/JniUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/execution/blaze/arrowio/util/ArrowColumnVector.java" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/execution/blaze/arrowio/util/ArrowColumnVector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/execution/blaze/plan/NativeParquetSinkUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/execution/blaze/plan/NativeParquetSinkUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/hive/blaze/HiveClientHelper.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/java/org/apache/spark/sql/hive/blaze/HiveClientHelper.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/resources/log4j2.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/BlazeCallNativeWrapper.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/BlazeCallNativeWrapper.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/BlazeConvertStrategy.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/BlazeConvertStrategy.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/BlazeConverters.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/BlazeConverters.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/BlazeSparkSessionExtension.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/BlazeSparkSessionExtension.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/MetricNode.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/MetricNode.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/NativeConverters.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/NativeConverters.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/NativeHelper.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/NativeHelper.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/NativeRDD.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/NativeRDD.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/NativeSupports.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/NativeSupports.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/SparkUDFWrapperContext.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/SparkUDFWrapperContext.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/SparkUDTFWrapperContext.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/SparkUDTFWrapperContext.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/memory/OnHeapSpillManager.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/blaze/memory/OnHeapSpillManager.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/arrowio/ArrowFFIExportIterator.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/arrowio/ArrowFFIExportIterator.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/arrowio/ColumnarHelper.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/arrowio/ColumnarHelper.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/arrowio/util/ArrowUtils.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/arrowio/util/ArrowUtils.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/arrowio/util/ArrowWriter.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/arrowio/util/ArrowWriter.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/ConvertToNativeBase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/ConvertToNativeBase.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeAggBase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeAggBase.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeBroadcastExchangeBase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeBroadcastExchangeBase.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetScanBase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeParquetScanBase.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeShuffleExchangeBase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/plan/NativeShuffleExchangeBase.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeBlockStoreShuffleReaderBase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeBlockStoreShuffleReaderBase.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleDependency.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleDependency.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleWriterBase.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/execution/blaze/shuffle/BlazeShuffleWriterBase.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/hive/blaze/HiveUDFUtil.scala" beforeDir="false" afterPath="$PROJECT_DIR$/spark-extension/src/main/scala/org/apache/spark/sql/hive/blaze/HiveUDFUtil.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +81,9 @@
   <component name="MacroExpansionManager">
     <option name="directoryName" value="lb9okwqs" />
   </component>
+  <component name="PerforceDirect.Settings">
+    <option name="CHARSET" value="无" />
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -86,6 +100,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
@@ -147,6 +162,9 @@
       <workItem from="1719921011351" duration="66000" />
       <workItem from="1719921085381" duration="196000" />
       <workItem from="1719921288941" duration="112000" />
+      <workItem from="1719921409654" duration="850000" />
+      <workItem from="1719922269005" duration="32843000" />
+      <workItem from="1720183412559" duration="1850000" />
     </task>
     <task id="LOCAL-00001" summary="1、blaze3.0.0 init">
       <option name="closed" value="true" />
@@ -156,7 +174,31 @@
       <option name="project" value="LOCAL" />
       <updated>1719829344075</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1、rust/scala log bug solved">
+      <option name="closed" value="true" />
+      <created>1719921524492</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1719921524492</updated>
+    </task>
+    <task id="LOCAL-00003" summary="1、all files added">
+      <option name="closed" value="true" />
+      <created>1719921569370</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1719921569370</updated>
+    </task>
+    <task id="LOCAL-00004" summary="1、modify NativeSortMergeJoinBase.scala">
+      <option name="closed" value="true" />
+      <created>1720099573018</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720099573018</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,7 +217,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1、blaze3.0.0 init" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、blaze3.0.0 init" />
+    <MESSAGE value="1、rust/scala log bug modify" />
+    <MESSAGE value="1、rust/scala log bug solved" />
+    <MESSAGE value="1、all files added" />
+    <MESSAGE value="1、modify NativeSortMergeJoinBase.scala" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、modify NativeSortMergeJoinBase.scala" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>

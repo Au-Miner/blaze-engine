@@ -115,6 +115,7 @@ object BlazeConverters extends Logging {
   var _UnusedOptimizer: Optimizer = _
 
   def convertSparkPlanRecursively(exec: SparkPlan): SparkPlan = {
+    println("=====13")
     // convert
     var danglingConverted: Seq[SparkPlan] = Nil
     exec.foreachUp { exec =>
@@ -137,6 +138,7 @@ object BlazeConverters extends Logging {
   }
 
   def convertSparkPlan(exec: SparkPlan): SparkPlan = {
+    println("=====14")
     exec match {
       case e: ShuffleExchangeExec => tryConvert(e, convertShuffleExchangeExec)
       case e: BroadcastExchangeExec => tryConvert(e, convertBroadcastExchangeExec)
@@ -229,6 +231,7 @@ object BlazeConverters extends Logging {
   }
 
   def tryConvert[T <: SparkPlan](exec: T, convert: T => SparkPlan): SparkPlan = {
+    println("=====15")
     try {
       exec.setTagValue(convertibleTag, true)
       convert(exec)
@@ -243,8 +246,9 @@ object BlazeConverters extends Logging {
   }
 
   def convertShuffleExchangeExec(exec: ShuffleExchangeExec): SparkPlan = {
+    println("=====16")
     val (outputPartitioning, child) = (exec.outputPartitioning, exec.child)
-    logDebug(s"Converting ShuffleExchangeExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println(s"Converting ShuffleExchangeExec: ${Shims.get.simpleStringWithNodeId(exec)}")
 
     assert(
       exec.outputPartitioning.numPartitions == 1 || exec.outputPartitioning
@@ -261,6 +265,7 @@ object BlazeConverters extends Logging {
   }
 
   def convertFileSourceScanExec(exec: FileSourceScanExec): SparkPlan = {
+    println("=====17")
     val (
       relation,
       output,
@@ -279,43 +284,47 @@ object BlazeConverters extends Logging {
     assert(
       relation.fileFormat.isInstanceOf[ParquetFileFormat],
       "Cannot convert non-parquet scan exec")
-    logDebug(s"Converting FileSourceScanExec: ${Shims.get.simpleStringWithNodeId(exec)}")
-    logDebug(s"  relation: ${relation}")
-    logDebug(s"  relation.location: ${relation.location}")
-    logDebug(s"  output: ${output}")
-    logDebug(s"  requiredSchema: ${requiredSchema}")
-    logDebug(s"  partitionFilters: ${partitionFilters}")
-    logDebug(s"  optionalBucketSet: ${optionalBucketSet}")
-    logDebug(s"  dataFilters: ${dataFilters}")
-    logDebug(s"  tableIdentifier: ${tableIdentifier}")
+    println(s"Converting FileSourceScanExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println(s"  relation: ${relation}")
+    println(s"  relation.location: ${relation.location}")
+    println(s"  output: ${output}")
+    println(s"  requiredSchema: ${requiredSchema}")
+    println(s"  partitionFilters: ${partitionFilters}")
+    println(s"  optionalBucketSet: ${optionalBucketSet}")
+    println(s"  dataFilters: ${dataFilters}")
+    println(s"  tableIdentifier: ${tableIdentifier}")
     addRenameColumnsExec(Shims.get.createNativeParquetScanExec(exec))
   }
 
   def convertProjectExec(exec: ProjectExec): SparkPlan = {
+    println("=====18")
     val (projectList, child) = (exec.projectList, exec.child)
-    logDebug(s"Converting ProjectExec: ${Shims.get.simpleStringWithNodeId(exec)}")
-    projectList.foreach(p => logDebug(s"  projectExpr: ${p}"))
+    println(s"Converting ProjectExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    projectList.foreach(p => println(s"  projectExpr: ${p}"))
     Shims.get.createNativeProjectExec(projectList, addRenameColumnsExec(convertToNative(child)))
   }
 
-  def convertFilterExec(exec: FilterExec): SparkPlan =
+  def convertFilterExec(exec: FilterExec): SparkPlan = {
+    println("=====19")
     exec match {
       case exec: FilterExec =>
-        logDebug(s"Converting FilterExec: ${Shims.get.simpleStringWithNodeId(exec)}")
-        logDebug(s"  condition: ${exec.condition}")
+        println(s"Converting FilterExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+        println(s"  condition: ${exec.condition}")
         Shims.get.createNativeFilterExec(
           exec.condition,
           addRenameColumnsExec(convertToNative(exec.child)))
       case _ =>
-        logDebug(s"Ignoring FilterExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+        println(s"Ignoring FilterExec: ${Shims.get.simpleStringWithNodeId(exec)}")
         exec
     }
+  }
 
   def convertSortExec(exec: SortExec): SparkPlan = {
+    println("=====20")
     val (sortOrder, global, child) = (exec.sortOrder, exec.global, exec.child)
-    logDebug(s"Converting SortExec: ${Shims.get.simpleStringWithNodeId(exec)}")
-    logDebug(s"  global: ${global}")
-    sortOrder.foreach(s => logDebug(s"  sortOrder: ${s}"))
+    println(s"Converting SortExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println(s"  global: ${global}")
+    sortOrder.foreach(s => println(s"  sortOrder: ${s}"))
     Shims.get.createNativeSortExec(
       sortOrder,
       global,
@@ -323,16 +332,18 @@ object BlazeConverters extends Logging {
   }
 
   def convertUnionExec(exec: UnionExec): SparkPlan = {
-    logDebug(s"Converting UnionExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println("=====21")
+    println(s"Converting UnionExec: ${Shims.get.simpleStringWithNodeId(exec)}")
     Shims.get.createNativeUnionExec(exec.children.map(child => {
       addRenameColumnsExec(convertToNative(child))
     }))
   }
 
   def convertSortMergeJoinExec(exec: SortMergeJoinExec): SparkPlan = {
+    println("=====22")
     val (leftKeys, rightKeys, joinType, condition, left, right) =
       (exec.leftKeys, exec.rightKeys, exec.joinType, exec.condition, exec.left, exec.right)
-    logDebug(s"Converting SortMergeJoinExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println(s"Converting SortMergeJoinExec: ${Shims.get.simpleStringWithNodeId(exec)}")
 
     Shims.get.createNativeSortMergeJoinExec(
       addRenameColumnsExec(convertToNative(left)),
@@ -344,6 +355,7 @@ object BlazeConverters extends Logging {
   }
 
   def convertBroadcastHashJoinExec(exec: BroadcastHashJoinExec): SparkPlan = {
+    println("=====23")
     try {
       val (leftKeys, rightKeys, joinType, buildSide, condition, left, right) = (
         exec.leftKeys,
@@ -353,12 +365,12 @@ object BlazeConverters extends Logging {
         exec.condition,
         exec.left,
         exec.right)
-      logDebug(s"Converting BroadcastHashJoinExec: ${Shims.get.simpleStringWithNodeId(exec)}")
-      logDebug(s"  leftKeys: $leftKeys")
-      logDebug(s"  rightKeys: $rightKeys")
-      logDebug(s"  joinType: $joinType")
-      logDebug(s"  buildSide: $buildSide")
-      logDebug(s"  condition: $condition")
+      println(s"Converting BroadcastHashJoinExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+      println(s"  leftKeys: $leftKeys")
+      println(s"  rightKeys: $rightKeys")
+      println(s"  joinType: $joinType")
+      println(s"  buildSide: $buildSide")
+      println(s"  condition: $condition")
       assert(condition.isEmpty, "join condition is not supported")
 
       // verify build side is native
@@ -393,14 +405,15 @@ object BlazeConverters extends Logging {
   }
 
   def convertBroadcastNestedLoopJoinExec(exec: BroadcastNestedLoopJoinExec): SparkPlan = {
+    println("=====24")
     try {
       val (joinType, buildSide, condition, left, right) =
         (exec.joinType, exec.buildSide, exec.condition, exec.left, exec.right)
-      logDebug(
+      println(
         s"Converting BroadcastNestedLoopJoinExec: ${Shims.get.simpleStringWithNodeId(exec)}")
-      logDebug(s"  joinType: ${exec.joinType}")
-      logDebug(s"  buildSide: ${exec.buildSide}")
-      logDebug(s"  condition: ${exec.condition}")
+      println(s"  joinType: ${exec.joinType}")
+      println(s"  buildSide: ${exec.buildSide}")
+      println(s"  condition: ${exec.condition}")
       assert(condition.isEmpty, "join condition is not supported")
 
       // verify build side is native
@@ -436,10 +449,11 @@ object BlazeConverters extends Logging {
   }
 
   def convertBroadcastExchangeExec(exec: SparkPlan): SparkPlan = {
+    println("=====25")
     exec match {
       case exec: BroadcastExchangeExec =>
-        logDebug(s"Converting BroadcastExchangeExec: ${Shims.get.simpleStringWithNodeId(exec)}")
-        logDebug(s"  mode: ${exec.mode}")
+        println(s"Converting BroadcastExchangeExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+        println(s"  mode: ${exec.mode}")
         val converted = Shims.get.createNativeBroadcastExchangeExec(exec.mode, exec.child)
         converted.setTagValue(NativeBroadcastExchangeBase.nativeExecutionTag, true)
         return converted
@@ -448,17 +462,20 @@ object BlazeConverters extends Logging {
   }
 
   def convertLocalLimitExec(exec: LocalLimitExec): SparkPlan = {
-    logDebug(s"Converting LocalLimitExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println("=====26")
+    println(s"Converting LocalLimitExec: ${Shims.get.simpleStringWithNodeId(exec)}")
     Shims.get.createNativeLocalLimitExec(exec.limit.toLong, exec.child)
   }
 
   def convertGlobalLimitExec(exec: GlobalLimitExec): SparkPlan = {
-    logDebug(s"Converting GlobalLimitExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println("=====27")
+    println(s"Converting GlobalLimitExec: ${Shims.get.simpleStringWithNodeId(exec)}")
     Shims.get.createNativeGlobalLimitExec(exec.limit.toLong, exec.child)
   }
 
   def convertTakeOrderedAndProjectExec(exec: TakeOrderedAndProjectExec): SparkPlan = {
-    logDebug(s"Converting TakeOrderedAndProjectExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println("=====28")
+    println(s"Converting TakeOrderedAndProjectExec: ${Shims.get.simpleStringWithNodeId(exec)}")
     val nativeTakeOrdered = Shims.get.createNativeTakeOrderedExec(
       exec.limit,
       exec.sortOrder,
@@ -473,6 +490,7 @@ object BlazeConverters extends Logging {
   }
 
   def convertHashAggregateExec(exec: HashAggregateExec): SparkPlan = {
+    println("=====29")
     // split non-trivial children exprs in partial-agg to a ProjectExec
     // for enabling filter-project optimization in native side
     getPartialAggProjection(exec.aggregateExpressions, exec.groupingExpressions) match {
@@ -485,7 +503,7 @@ object BlazeConverters extends Logging {
       case None => // passthrough
     }
 
-    logDebug(s"Converting HashAggregateExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println(s"Converting HashAggregateExec: ${Shims.get.simpleStringWithNodeId(exec)}")
 
     // ensure native partial agg exists
     if (exec.requiredChildDistributionExpressions.isDefined) {
@@ -530,6 +548,7 @@ object BlazeConverters extends Logging {
   }
 
   def convertObjectHashAggregateExec(exec: ObjectHashAggregateExec): SparkPlan = {
+    println("=====30")
     // split non-trivial children exprs in partial-agg to a ProjectExec
     // for enabling filter-project optimization in native side
     getPartialAggProjection(exec.aggregateExpressions, exec.groupingExpressions) match {
@@ -542,7 +561,7 @@ object BlazeConverters extends Logging {
       case None => // passthrough
     }
 
-    logDebug(s"Converting ObjectHashAggregateExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println(s"Converting ObjectHashAggregateExec: ${Shims.get.simpleStringWithNodeId(exec)}")
 
     // ensure native partial agg exists
     if (exec.requiredChildDistributionExpressions.isDefined) {
@@ -587,7 +606,8 @@ object BlazeConverters extends Logging {
   }
 
   def convertSortAggregateExec(exec: SortAggregateExec): SparkPlan = {
-    logDebug(s"Converting SortAggregateExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println("=====31")
+    println(s"Converting SortAggregateExec: ${Shims.get.simpleStringWithNodeId(exec)}")
 
     // ensure native partial agg exists
     if (exec.requiredChildDistributionExpressions.isDefined) {
@@ -641,8 +661,9 @@ object BlazeConverters extends Logging {
   }
 
   def convertExpandExec(exec: ExpandExec): SparkPlan = {
-    logDebug(s"Converting ExpandExec: ${Shims.get.simpleStringWithNodeId(exec)}")
-    logDebug(s"  projections: ${exec.projections}")
+    println("=====32")
+    println(s"Converting ExpandExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println(s"  projections: ${exec.projections}")
     Shims.get.createNativeExpandExec(
       exec.projections,
       exec.output,
@@ -650,10 +671,11 @@ object BlazeConverters extends Logging {
   }
 
   def convertWindowExec(exec: WindowExec): SparkPlan = {
-    logDebug(s"Converting WindowExec: ${Shims.get.simpleStringWithNodeId(exec)}")
-    logDebug(s"  window exprs: ${exec.windowExpression}")
-    logDebug(s"  partition spec: ${exec.partitionSpec}")
-    logDebug(s"  order spec: ${exec.orderSpec}")
+    println("=====33")
+    println(s"Converting WindowExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println(s"  window exprs: ${exec.windowExpression}")
+    println(s"  partition spec: ${exec.partitionSpec}")
+    println(s"  order spec: ${exec.orderSpec}")
     Shims.get.createNativeWindowExec(
       exec.windowExpression,
       exec.partitionSpec,
@@ -662,11 +684,12 @@ object BlazeConverters extends Logging {
   }
 
   def convertGenerateExec(exec: GenerateExec): SparkPlan = {
-    logDebug(s"Converting GenerateExec: ${Shims.get.simpleStringWithNodeId(exec)}")
-    logDebug(s"  generator: ${exec.generator}")
-    logDebug(s"  generatorOutput: ${exec.generatorOutput}")
-    logDebug(s"  requiredChildOutput: ${exec.requiredChildOutput}")
-    logDebug(s"  outer: ${exec.outer}")
+    println("=====34")
+    println(s"Converting GenerateExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println(s"  generator: ${exec.generator}")
+    println(s"  generatorOutput: ${exec.generatorOutput}")
+    println(s"  requiredChildOutput: ${exec.requiredChildOutput}")
+    println(s"  outer: ${exec.outer}")
     Shims.get.createNativeGenerateExec(
       exec.generator,
       exec.requiredChildOutput,
@@ -676,11 +699,13 @@ object BlazeConverters extends Logging {
   }
 
   def convertLocalTableScanExec(exec: LocalTableScanExec): SparkPlan = {
+    println("=====35")
     convertToNative(exec)
   }
 
   def convertDataWritingCommandExec(exec: DataWritingCommandExec): SparkPlan = {
-    logDebug(s"Converting DataWritingCommandExec: ${Shims.get.simpleStringWithNodeId(exec)}")
+    println("=====36")
+    println(s"Converting DataWritingCommandExec: ${Shims.get.simpleStringWithNodeId(exec)}")
     exec match {
       case DataWritingCommandExec(cmd: InsertIntoHiveTable, child)
           if cmd.table.storage.outputFormat.contains(
@@ -707,6 +732,7 @@ object BlazeConverters extends Logging {
   }
 
   def convertToNative(exec: SparkPlan): SparkPlan = {
+    println("=====37")
     exec match {
       case exec if NativeHelper.isNative(exec) => exec
       case exec =>
@@ -719,6 +745,7 @@ object BlazeConverters extends Logging {
   // 尾递归方式进行避免栈溢出错误
   @tailrec
   def needRenameColumns(plan: SparkPlan): Boolean = {
+    println("=====38")
     if (plan.output.isEmpty) {
       return false
     }
@@ -733,6 +760,7 @@ object BlazeConverters extends Logging {
   }
 
   def addRenameColumnsExec(exec: SparkPlan): SparkPlan = {
+    println("=====39")
     if (needRenameColumns(exec)) {
       return Shims.get.createNativeRenameColumnsExec(
         exec,
@@ -745,6 +773,7 @@ object BlazeConverters extends Logging {
       aggregateExprs: Seq[AggregateExpression],
       groupingExprs: Seq[NamedExpression])
       : Option[(Seq[AggregateExpression], Seq[NamedExpression], Seq[Alias])] = {
+    println("=====40")
 
     if (!aggregateExprs.forall(_.mode == Partial)) {
       return None

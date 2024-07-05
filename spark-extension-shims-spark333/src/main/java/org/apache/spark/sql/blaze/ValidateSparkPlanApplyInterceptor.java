@@ -26,6 +26,7 @@ public class ValidateSparkPlanApplyInterceptor {
 
     @RuntimeType
     public static Object intercept(@Argument(0) Object plan) {
+        System.out.println("=====213");
         logger.debug("calling ValidateSparkPlan.apply() intercepted by blaze");
         // 调用InterceptedValidateSparkPlan.validate方法来执行（java调用scala的object对象，必须要使用name$.MODULE$的方式）
         InterceptedValidateSparkPlan$.MODULE$.validate((SparkPlan) plan);

@@ -34,12 +34,16 @@ import org.apache.spark.util.ShutdownHookManager
 object ArrowUtils {
   val rootAllocator = new RootAllocator(Long.MaxValue)
   ShutdownHookManager.addShutdownHook(() => rootAllocator.close())
+  println("=====75")
 
-  def newChildAllocator(name: String): BufferAllocator =
+  def newChildAllocator(name: String): BufferAllocator = {
+    println("=====76")
     rootAllocator.newChildAllocator(name, 0, Long.MaxValue)
+  }
 
   /** Maps data type from Spark to Arrow. NOTE: timeZoneId is always NULL in TimestampTypes */
-  def toArrowType(dt: DataType): ArrowType =
+  def toArrowType(dt: DataType): ArrowType = {
+    println("=====77")
     dt match {
       case NullType => ArrowType.Null.INSTANCE
       case BooleanType => ArrowType.Bool.INSTANCE
@@ -57,8 +61,10 @@ object ArrowUtils {
       case _ =>
         throw new UnsupportedOperationException(s"Unsupported data type: ${dt.catalogString}")
     }
+  }
 
-  def fromArrowType(dt: ArrowType): DataType =
+  def fromArrowType(dt: ArrowType): DataType = {
+    println("=====78")
     dt match {
       case ArrowType.Null.INSTANCE => NullType
       case ArrowType.Bool.INSTANCE => BooleanType
@@ -79,9 +85,11 @@ object ArrowUtils {
       case ts: ArrowType.Timestamp if ts.getUnit == TimeUnit.MICROSECOND => TimestampType
       case _ => throw new UnsupportedOperationException(s"Unsupported data type: $dt")
     }
+  }
 
   /** Maps field from Spark to Arrow */
   def toArrowField(name: String, dt: DataType, nullable: Boolean): Field = {
+    println("=====79")
     dt match {
       case ArrayType(elementType, containsNull) =>
         val fieldType = new FieldType(nullable, ArrowType.List.INSTANCE, null)
@@ -115,6 +123,7 @@ object ArrowUtils {
   }
 
   def fromArrowField(field: Field): DataType = {
+    println("=====80")
     field.getType match {
       case _: ArrowType.Map =>
         val elementField = field.getChildren.get(0)
@@ -141,12 +150,14 @@ object ArrowUtils {
    * Maps schema from Spark to Arrow. NOTE: timeZoneId required for TimestampType in StructType
    */
   def toArrowSchema(schema: StructType): Schema = {
+    println("=====81")
     new Schema(schema.map { field =>
       toArrowField(field.name, field.dataType, field.nullable)
     }.asJava)
   }
 
   def fromArrowSchema(schema: Schema): StructType = {
+    println("=====82")
     StructType(schema.getFields.asScala.map { field =>
       val dt = fromArrowField(field)
       StructField(field.getName, dt, field.isNullable)

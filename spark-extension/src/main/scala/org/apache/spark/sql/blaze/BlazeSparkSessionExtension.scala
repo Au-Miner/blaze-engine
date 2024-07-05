@@ -18,25 +18,24 @@ package org.apache.spark.sql.blaze
 import org.apache.spark.SparkEnv
 import org.apache.spark.internal.Logging
 import org.apache.spark.internal.config.ConfigEntry
-import org.apache.spark.sql.SparkSessionExtensions
+import org.apache.spark.sql.{SparkSession, SparkSessionExtensions}
 import org.apache.spark.sql.catalyst.rules.Rule
-import org.apache.spark.sql.execution.SparkPlan
-import org.apache.spark.sql.SparkSession
-import org.apache.spark.sql.execution.ColumnarRule
-import org.apache.spark.sql.execution.LocalTableScanExec
+import org.apache.spark.sql.execution.{ColumnarRule, LocalTableScanExec, SparkPlan}
 import org.apache.spark.sql.internal.SQLConf
 
 // extends(...): 实现了一个接收 SparkSessionExtensions 参数并返回Unit的函数特质
 class BlazeSparkSessionExtension extends (SparkSessionExtensions => Unit) with Logging {
+  println("=====171")
   // 初始化适配模块Shims，并调用扩展初始化方法
   Shims.get.initExtension()
 
   // 通过实现apply方法，该类可以像函数一样被调用
   // 定义apply方法的对象或类可以使用类似函数调用的语法，而不需要显式地调用apply方法
   override def apply(extensions: SparkSessionExtensions): Unit = {
+    println("=====170")
     SparkEnv.get.conf.set("spark.sql.adaptive.enabled", "true")
     SparkEnv.get.conf.set("spark.sql.adaptive.forceApply", "true")
-    logInfo("org.apache.spark.BlazeSparkSessionExtension enabled")
+    println("org.apache.spark.BlazeSparkSessionExtension enabled")
 
     assert(BlazeSparkSessionExtension.blazeEnabledKey != null)
     // spark333没有实现该方法
@@ -49,6 +48,7 @@ class BlazeSparkSessionExtension extends (SparkSessionExtensions => Unit) with L
 }
 
 object BlazeSparkSessionExtension extends Logging {
+  println("=====172")
   lazy val blazeEnabledKey: ConfigEntry[Boolean] = SQLConf
     .buildConf("spark.blaze.enable")
     .booleanConf
@@ -56,6 +56,7 @@ object BlazeSparkSessionExtension extends Logging {
 
   // 递归地打印出 Spark 计划树（SparkPlan）的每个节点信息
   def dumpSimpleSparkPlanTreeNode(exec: SparkPlan, depth: Int = 0): Unit = {
+    println("=====169")
     val nodeName = exec.nodeName
     val convertible = exec
       .getTagValue(BlazeConvertStrategy.convertibleTag)
@@ -63,7 +64,7 @@ object BlazeSparkSessionExtension extends Logging {
     val strategy =
       exec.getTagValue(BlazeConvertStrategy.convertStrategyTag).getOrElse(Default)
     // 输出每个节点的名称、是否可转换（convertible），以及转换策略（strategy）
-    logInfo(s" +${"-" * depth} $nodeName (convertible=$convertible, strategy=$strategy)")
+    println(s" +${"-" * depth} $nodeName (convertible=$convertible, strategy=$strategy)")
     exec.children.foreach(dumpSimpleSparkPlanTreeNode(_, depth + 1))
   }
 }
@@ -75,6 +76,7 @@ case class BlazeColumnarOverrides(sparkSession: SparkSession) extends ColumnarRu
   override def preColumnarTransitions: Rule[SparkPlan] = {
     new Rule[SparkPlan] {
       override def apply(sparkPlan: SparkPlan): SparkPlan = {
+        println("=====45")
         // 配置项未启用，则直接返回原始计划
         if (!sparkPlan.conf.getConf(blazeEnabledKey)) {
           return sparkPlan // performs no conversion if blaze is not enabled
@@ -86,25 +88,30 @@ case class BlazeColumnarOverrides(sparkSession: SparkSession) extends ColumnarRu
 
         // 生成当前物理计划的转换策略（并未实际转换）
         // generate convert strategy
-        logInfo("wqlnb: 准备插入策略")
+        println("wqlnb: 准备插入策略")
+        println(s"原SparkPlan为：\n$sparkPlan\n-------------")
         BlazeConvertStrategy.apply(sparkPlan)
-        logInfo("Blaze convert strategy for current stage:")
+        println("Blaze convert strategy for current stage:")
         // 打印信息
         dumpSimpleSparkPlanTreeNode(sparkPlan)
 
         // 通过递归开始实际转换
         val sparkPlanTransformed = BlazeConverters.convertSparkPlanRecursively(sparkPlan)
-        logInfo("Blaze convert result for current stage:")
+        println("Blaze convert result for current stage:")
         // 打印信息
         dumpSimpleSparkPlanTreeNode(sparkPlanTransformed)
 
-        logInfo(s"Transformed spark plan after preColumnarTransitions:\n${sparkPlanTransformed
+        println(s"Transformed spark plan after preColumnarTransitions:\n${sparkPlanTransformed
           .treeString(verbose = true, addSuffix = true)}")
 
         // post-transform
         // 向后转换（未实现实际功能）
         Shims.get.postTransform(sparkPlanTransformed, sparkSession.sparkContext)
         // 返回转换后的sparkPlan
+        println(s"转换后SparkPlan为：\n$sparkPlanTransformed\n-------------")
+        if (sparkPlanTransformed != sparkPlan) {
+          println(s"发生了转换\n，转换前为：\n$sparkPlan\n，转换后为：\n$sparkPlanTransformed\n-------------")
+        }
         sparkPlanTransformed
       }
     }

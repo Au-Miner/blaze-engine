@@ -31,6 +31,7 @@ object InterceptedValidateSparkPlan extends Logging {
   // 验证物理执行计划的合法性
   // 递归验证确保buildPlan必须是BroadcastQueryStageExec，如果遇到无效的BroadcastQueryStageExec计划，代码会抛出异常
   def validate(plan: SparkPlan): Unit = {
+    println("=====118")
     plan match {
       case b: BroadcastHashJoinExec =>
         val (buildPlan, probePlan) = b.buildSide match {

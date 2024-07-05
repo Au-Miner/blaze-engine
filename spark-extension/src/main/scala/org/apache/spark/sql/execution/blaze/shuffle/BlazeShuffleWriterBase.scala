@@ -55,6 +55,7 @@ abstract class BlazeShuffleWriterBase[K, V](metrics: ShuffleWriteMetricsReporter
       mapId: Int,
       context: TaskContext,
       partition: Partition): MapStatus = {
+    println("=====113")
 
     val shuffleBlockResolver =
       SparkEnv.get.shuffleManager.shuffleBlockResolver.asInstanceOf[IndexShuffleBlockResolver]

@@ -78,7 +78,7 @@ class BlazeBlockStoreShuffleReader[K, C](
     val doBatchFetch = shouldBatchFetch && serializerRelocatable &&
       (!compressed || codecConcatenation) && !useOldFetchProtocol
     if (shouldBatchFetch && !doBatchFetch) {
-      logDebug(
+      println(
         "The feature tag of continuous shuffle block fetching is set to true, but " +
           "we can not enable the feature because other conditions are not satisfied. " +
           s"Shuffle compress: $compressed, serializer relocatable: $serializerRelocatable, " +

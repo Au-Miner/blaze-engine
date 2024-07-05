@@ -19,6 +19,7 @@ import org.apache.spark.sql.execution.FileSourceScanExec
 
 case class NativeParquetScanExec(basedFileScan: FileSourceScanExec)
     extends NativeParquetScanBase(basedFileScan) {
+  println("=====192")
 
   override def simpleString(maxFields: Int): String =
     s"$nodeName (${basedFileScan.simpleString(maxFields)})"

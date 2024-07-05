@@ -24,10 +24,13 @@ case class MetricNode(
     metricValueHandler: Option[(String, Long) => Unit] = None)
     extends Logging {
 
-  def getChild(i: Int): MetricNode =
+  def getChild(i: Int): MetricNode = {
+    println("=====46")
     children(i)
+  }
 
   def add(metricName: String, v: Long): Unit = {
+    println("=====47")
     metricValueHandler.foreach(_.apply(metricName, v))
     if (v > 0) {
       metrics.get(metricName).foreach(_.add(v))
@@ -35,6 +38,7 @@ case class MetricNode(
   }
 
   def foreach(fn: MetricNode => Unit): Unit = {
+    println("=====48")
     fn(this)
     this.children.foreach(_.foreach(fn))
   }

@@ -6,6 +6,7 @@ import org.apache.spark.sql.hive.client.HiveClientImpl
 
 object HiveClientHelper {
   def toHiveTable(table: CatalogTable, userName: Option[String] = None): Table = {
+    println("=====226")
     HiveClientImpl.toHiveTable(table, userName)
   }
 }
