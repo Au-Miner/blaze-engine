@@ -48,36 +48,35 @@ class ArrowFFIExportIterator(rowIter: Iterator[InternalRow], schema: StructType)
 
   override def next(): (Long, Long) => Unit = {
     println("=====89")
-    (exportArrowSchemaPtr: Long, exportArrowArrayPtr: Long) =>
-      {
-        Using.resource(ArrowUtils.newChildAllocator(getClass.getName)) { batchAllocator =>
-          currentVectorConsumed = false
+    (exportArrowSchemaPtr: Long, exportArrowArrayPtr: Long) => {
+      Using.resource(ArrowUtils.newChildAllocator(getClass.getName)) { batchAllocator =>
+        currentVectorConsumed = false
 
-          Using.resources(
-            VectorSchemaRoot.create(arrowSchema, batchAllocator),
-            ArrowArray.wrap(exportArrowArrayPtr),
-            ArrowSchema.wrap(exportArrowSchemaPtr)) { case (root, exportArray, exportSchema) =>
-            val arrowWriter = ArrowWriter.create(root)
-            var rowCount = 0
+        Using.resources(
+          VectorSchemaRoot.create(arrowSchema, batchAllocator),
+          ArrowArray.wrap(exportArrowArrayPtr),
+          ArrowSchema.wrap(exportArrowSchemaPtr)) { case (root, exportArray, exportSchema) =>
+          val arrowWriter = ArrowWriter.create(root)
+          var rowCount = 0
 
-            while (rowIter.hasNext
-              && rowCount < maxBatchNumRows
-              && batchAllocator.getAllocatedMemory < maxBatchMemorySize) {
-              arrowWriter.write(rowIter.next())
-              rowCount += 1
-            }
-            arrowWriter.finish()
-            currentVectorConsumed = true
-
-            // export using root allocator
-            Data.exportVectorSchemaRoot(
-              ArrowUtils.rootAllocator,
-              root,
-              emptyDictionaryProvider,
-              exportArray,
-              exportSchema)
+          while (rowIter.hasNext
+            && rowCount < maxBatchNumRows
+            && batchAllocator.getAllocatedMemory < maxBatchMemorySize) {
+            arrowWriter.write(rowIter.next())
+            rowCount += 1
           }
+          arrowWriter.finish()
+          currentVectorConsumed = true
+
+          // export using root allocator
+          Data.exportVectorSchemaRoot(
+            ArrowUtils.rootAllocator,
+            root,
+            emptyDictionaryProvider,
+            exportArray,
+            exportSchema)
         }
       }
+    }
   }
 }

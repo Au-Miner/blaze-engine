@@ -93,9 +93,10 @@ abstract class NativeParquetScanBase(basedFileScan: FileSourceScanExec)
       .map(expr => NativeConverters.convertScanPruningExpr(expr))
   }
 
-  // 创建native表元数据
+  // 将fileSchema转换为pb支持的Schema
   private def nativeFileSchema = {
     println("=====175")
+    // 将sparkSchema转换为pb支持的Schema
     NativeConverters.convertSchema(StructType(basedFileScan.relation.dataSchema.map {
       case field if basedFileScan.requiredSchema.exists(_.name == field.name) =>
         field.copy(nullable = true)
@@ -110,7 +111,7 @@ abstract class NativeParquetScanBase(basedFileScan: FileSourceScanExec)
     NativeConverters.convertSchema(partitionSchema)
   }
 
-  // 将所有FilePartition（包含了数据）转为nativeFileGroup
+  // 将所有FilePartition转为nativeFileGroup，只包含了file的元信息（因为partitionSchema当前sql为NULL）
   private def nativeFileGroups = (partition: FilePartition) => {
     println("=====177")
     // list input file statuses
@@ -142,10 +143,13 @@ abstract class NativeParquetScanBase(basedFileScan: FileSourceScanExec)
   }
 
   // check whether native converting is supported
-  // 检查是否支持本机转换，如果初始化过程中有任何问题（例如，某些转换不被支持），这些问题会在引用这些变量时被发现
+  // filter预剪枝转换，当前sql为NULL
   nativePruningPredicateFilters
+  // fileSchema转换为pb格式
   nativeFileSchema
+  // partitionSchema转换为pb格式，当前sql为NULL
   nativePartitionSchema
+  // 将所有FilePartition转为nativeFileGroup，只包含了file的元信息
   nativeFileGroups
 
   override def doExecuteNative(): NativeRDD = {

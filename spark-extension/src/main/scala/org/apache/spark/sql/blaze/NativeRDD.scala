@@ -46,7 +46,6 @@ class NativeRDD(
   override protected def getDependencies: Seq[Dependency[_]] = rddDependencies
 
   override def compute(split: Partition, context: TaskContext): Iterator[InternalRow] = {
-    println("=====69")
     val computingNativePlan = nativePlan(split, context)
     NativeHelper.executeNativePlan(computingNativePlan, metrics, split, Some(context))
   }

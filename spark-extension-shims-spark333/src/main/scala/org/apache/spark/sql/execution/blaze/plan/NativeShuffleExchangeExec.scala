@@ -78,6 +78,7 @@ case class NativeShuffleExchangeExec(
     if (inputRDD.getNumPartitions == 0) {
       Future.successful(null)
     } else {
+      println("over")
       sparkContext
         .submitMapStage(shuffleDependency)
         .map(stat => new MapOutputStatistics(stat.shuffleId, stat.bytesByPartitionId))

@@ -84,7 +84,6 @@ object NativeHelper extends Logging {
       metrics: MetricNode,
       partition: Partition,
       context: Option[TaskContext]): Iterator[InternalRow] = {
-    println("=====67")
 
     if (partition.index == 0 && metrics != null && context.nonEmpty) {
       metrics.foreach(_.add("stage_id", context.get.stageId()))

@@ -188,7 +188,9 @@ class ShimsImpl extends Shims with Logging {
     NativeExpandExec(projections, output, child)
   }
 
-  override def createNativeFilterExec(condition: Expression, child: SparkPlan): NativeFilterBase = {
+  override def createNativeFilterExec(
+      condition: Expression,
+      child: SparkPlan): NativeFilterBase = {
     println("=====126")
     NativeFilterExec(condition, child)
   }
@@ -203,7 +205,9 @@ class ShimsImpl extends Shims with Logging {
     NativeGenerateExec(generator, requiredChildOutput, outer, generatorOutput, child)
   }
 
-  override def createNativeGlobalLimitExec(limit: Long, child: SparkPlan): NativeGlobalLimitBase = {
+  override def createNativeGlobalLimitExec(
+      limit: Long,
+      child: SparkPlan): NativeGlobalLimitBase = {
     println("=====128")
     NativeGlobalLimitExec(limit, child)
   }

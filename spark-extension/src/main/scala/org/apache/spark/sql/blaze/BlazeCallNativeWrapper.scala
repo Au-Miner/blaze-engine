@@ -63,7 +63,6 @@ case class BlazeCallNativeWrapper(
   private var batchCurRowIdx = 0
 
   println(s"Start executing native plan")
-  println("=====1")
 
   private var nativeRuntimePtr = JniBridge.callNative(NativeHelper.nativeMemory, this)
 
@@ -73,7 +72,6 @@ case class BlazeCallNativeWrapper(
       if (batchCurRowIdx < batchRows.length) {
         return true
       }
-      println("=====2")
 
       // clear current batch
       batchRows.clear()
@@ -87,7 +85,6 @@ case class BlazeCallNativeWrapper(
     }
 
     override def next(): InternalRow = {
-      println("=====3")
       checkError()
       val batchRow = batchRows(batchCurRowIdx)
       batchCurRowIdx += 1
@@ -149,7 +146,6 @@ case class BlazeCallNativeWrapper(
       throw throwable
     }
   }
-
   protected def getRawTaskDefinition: Array[Byte] = {
     println("=====10")
     val partitionId: PartitionId = PartitionId
@@ -206,7 +202,8 @@ object BlazeCallNativeWrapper extends Logging {
       tempFile.deleteOnExit()
 
       println(s"libName的内容为：${libName}")
-      println(s"classLoader.getResourceAsStream(libName)：${classLoader.getResourceAsStream(libName)}")
+      println(
+        s"classLoader.getResourceAsStream(libName)：${classLoader.getResourceAsStream(libName)}")
       Utils.tryWithResource(classLoader.getResourceAsStream(libName)) { is =>
         assert(is != null, s"cannot load $libName")
         Files.copy(is, tempFile.toPath, StandardCopyOption.REPLACE_EXISTING)

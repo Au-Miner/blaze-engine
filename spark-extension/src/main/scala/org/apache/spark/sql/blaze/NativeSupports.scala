@@ -26,7 +26,6 @@ trait NativeSupports extends SparkPlan {
   protected override def doExecute(): RDD[InternalRow] = doExecuteNative()
 
   def executeNative(): NativeRDD = executeQuery {
-    println("=====70")
     doExecuteNative()
   }
 

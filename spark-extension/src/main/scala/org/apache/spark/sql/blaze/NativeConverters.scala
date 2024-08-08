@@ -256,7 +256,7 @@ object NativeConverters extends Logging {
       .build()
   }
 
-  // 转换为nativeSchema
+  // 将sparkSchema转换为pb支持的Schema
   def convertSchema(sparkSchema: StructType): pb.Schema = {
     println("=====53")
     val schemaBuilder = pb.Schema.newBuilder()

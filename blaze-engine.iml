@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$" dumb="true">
+      <sourceFolder url="file://$MODULE_DIR$/native-engine/blaze-jni-bridge/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/native-engine/blaze-serde/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/native-engine/blaze/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/native-engine/datafusion-ext-commons/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/native-engine/datafusion-ext-exprs/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/native-engine/datafusion-ext-functions/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/native-engine/datafusion-ext-plans/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+  </component>
+</module>
